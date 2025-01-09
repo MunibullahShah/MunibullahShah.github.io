@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munibullah Shah - Flutter Developer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255,255,255,0.1) 10px,
+                    rgba(255,255,255,0.1) 20px
+            );
+            animation: moveBackground 20s linear infinite;
+        }
+        @keyframes moveBackground {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50%, 50%);
+            }
+        }
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #FFC107;
+            color: #333;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .cta-button:hover {
+            background-color: #FFA000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        main {
+            padding: 20px;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .project {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <h1>Munibullah Shah</h1>
+        <p class="subtitle">Experienced Flutter Developer</p>
+        <a href="#contact" class="cta-button">Get In Touch</a>
+    </div>
+</header>
+
+<main>
+    <section class="section">
+        <h2>About Me</h2>
+        <p>Experienced Developer with 3 years of experience in creating programs based on specific requirements. Adaptable, diligent, and knowledgeable in Flutter and Dart.</p>
+        <p>📍 E-11, Islamabad | 📞 00923120944035 | 📧 munibs47@gmail.com | 🔗 <a href="https://www.linkedin.com/in/munibullah-shah" target="_blank">LinkedIn</a></p>
+    </section>
+
+    <section class="section">
+        <h2>Experience</h2>
+        <div class="project">
+            <h3>Software Engineer - SuperHero Inc., Islamabad</h3>
+            <p><em>May 2024 - Present</em></p>
+            <ul>
+                <li>Developed and maintained the SuperHero eSIM app using Flutter</li>
+                <li>Integrated Stripe Payment gateway</li>
+                <li>Implemented API integrations</li>
+                <li>Enhanced app responsiveness across different devices</li>
+            </ul>
+        </div>
+        <div class="project">
+            <h3>Associate Software Engineer - Hoboetech, Lahore</h3>
+            <p><em>September 2022 - December 2023</em></p>
+            <ul>
+                <li>Worked on 6 applications and built 3 from scratch</li>
+                <li>Integrated Google Maps and MapBox into mobile applications</li>
+                <li>Implemented Firebase services and Google ML Kit</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>SuperHero: eSIM (Flutter)</h3>
+            <p>Developed a Flutter-based eSIM purchasing application with Stripe integration and API implementation.</p>
+        </div>
+        <div class="project">
+            <h3>DHA Attendance App (Flutter)</h3>
+            <p>Built from scratch, implementing Google Maps SDK, geofencing, and facial recognition through Google ML Kit.</p>
+        </div>
+        <div class="project">
+            <h3>Bahria Plus (Flutter)</h3>
+            <p>Developed a real-estate marketing application, collaborating with cross-functional teams.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Skills</h2>
+        <div class="skills">
+            <span class="skill">Flutter</span>
+            <span class="skill">Dart</span>
+            <span class="skill">Payment Gateway Integration</span>
+            <span class="skill">Backend Development</span>
+            <span class="skill">Version Control</span>
+            <span class="skill">Cloud Services</span>
+            <span class="skill">VPN Development</span>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Education</h2>
+        <p><strong>BS. Software Engineering</strong> - Comsats University, Lahore (July 2022)</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Munibullah Shah. All rights reserved.</p>
+</footer>
+</body>
+</html>

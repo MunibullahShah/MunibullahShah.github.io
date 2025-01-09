@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Munibullah Shah - Flutter Developer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(135deg, #4CAF50, #2196F3);
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 10px,
+              rgba(255,255,255,0.1) 10px,
+              rgba(255,255,255,0.1) 20px
+      );
+      animation: moveBackground 20s linear infinite;
+    }
+    @keyframes moveBackground {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(50%, 50%);
+      }
+    }
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+    .project-images {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .project-images img {
+      max-width: 30%;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .project-description {
+      margin-top: 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #FFC107;
+      color: #333;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .cta-button:hover {
+      background-color: #FFA000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    }
+    main {
+      padding: 20px;
+    }
+    h2 {
+      color: #4CAF50;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .project {
+      background-color: #f4f4f4;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill {
+      background-color: #4CAF50;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-content">
+    <h1>Munibullah Shah</h1>
+    <p class="subtitle">Experienced Flutter Developer</p>
+    <a href="https://www.linkedin.com/in/munibullah-shah/" class="cta-button">Get In Touch</a>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <h2>About Me</h2>
+    <p>Experienced Developer with 3 years of experience in creating programs based on specific requirements. Adaptable, diligent, and knowledgeable in Flutter and Dart.</p>
+    <p>📍 E-11, Islamabad | 📞 00923120944035 | 📧 munibs47@gmail.com | 🔗 <a href="https://www.linkedin.com/in/munibullah-shah" target="_blank">LinkedIn</a></p>
+  </section>
+
+  <section class="section">
+    <h2>Experience</h2>
+    <div class="project">
+      <h3>Software Engineer - SuperHero Inc., Islamabad</h3>
+      <p><em>May 2024 - Present</em></p>
+      <ul>
+        <li>Developed and maintained the SuperHero eSIM app using Flutter</li>
+        <li>Integrated Stripe Payment gateway</li>
+        <li>Implemented API integrations</li>
+        <li>Enhanced app responsiveness across different devices</li>
+      </ul>
+    </div>
+    <div class="project">
+      <h3>Associate Software Engineer - Hoboetech, Lahore</h3>
+      <p><em>September 2022 - December 2023</em></p>
+      <ul>
+        <li>Worked on 6 applications and built 3 from scratch</li>
+        <li>Integrated Google Maps and MapBox into mobile applications</li>
+        <li>Implemented Firebase services and Google ML Kit</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>SuperHero: eSIM (Flutter)</h3>
+      <p>Developed a Flutter-based eSIM purchasing application with Stripe integration and API implementation.</p>
+      <div class="project-description">
+        <p>The SuperHero app is a comprehensive eSIM solution for international travelers. Key features include:</p>
+        <ul>
+          <li>User-friendly interface for browsing and purchasing eSIMs for various countries</li>
+          <li>Integrated payment system with multiple data plan options</li>
+          <li>Seamless eSIM activation process</li>
+          <li>Support for multiple countries and regions</li>
+        </ul>
+      </div>
+      <div class="project-images">
+        <img src="/yes/api/placeholder/superhero_pic1.png" alt="superhero_pic1" />
+        <img src="/yes/api/placeholder/superhero_pic2.png" alt="superhero_pic2" />
+        <img src="/yes/api/placeholder/superhero_pic3.png" alt="superhero_pic3" />
+      </div>
+    </div>
+    <div class="project">
+      <h3>DHA Attendance App (Flutter)</h3>
+      <p>Built a comprehensive attendance management application for DHA from scratch.</p>
+      <div class="project-description">
+        <p>Key features and responsibilities:</p>
+        <ul>
+          <li>Implemented Google Maps SDK for location-based attendance tracking</li>
+          <li>Developed geofencing functionality to ensure on-site attendance</li>
+          <li>Integrated push notifications for real-time updates and reminders</li>
+          <li>Incorporated facial recognition using Google ML Kit for enhanced security</li>
+          <li>Designed and implemented custom API integrations for data synchronization</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>DHA Resident App (Flutter)</h3>
+      <p>Developed a comprehensive mobile application for DHA residents from the ground up.</p>
+      <div class="project-description">
+        <p>Key features and responsibilities:</p>
+        <ul>
+          <li>Integrated Google Maps SDK for location-based services within the community</li>
+          <li>Implemented geofencing for location-specific features and notifications</li>
+          <li>Designed and integrated a robust push notification system for community updates</li>
+          <li>Developed custom API integrations for real-time data exchange with backend services</li>
+          <li>Created a user-friendly interface for accessing community services and information</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Bahria Plus (Flutter)</h3>
+      <p>Contributed to the development of a real-estate marketing application.</p>
+      <div class="project-description">
+        <p>Key features and responsibilities:</p>
+        <ul>
+          <li>Collaborated with cross-functional teams to design and implement new features</li>
+          <li>Developed responsive UI components for seamless user experience across devices</li>
+          <li>Integrated real-time property listings and search functionality</li>
+          <li>Implemented user authentication and profile management features</li>
+          <li>Contributed to code reviews and maintained high-quality coding standards</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Uplead (Node.js)</h3>
+      <p>Designed backend logic for a Node.js application as a freelance project.</p>
+      <div class="project-description">
+        <p>Key features and responsibilities:</p>
+        <ul>
+          <li>Architected robust API endpoints for efficient data management</li>
+          <li>Implemented secure user authentication and authorization systems</li>
+          <li>Designed and optimized database schemas for improved performance</li>
+          <li>Integrated third-party services like Stripe for enhanced functionality</li>
+          <li>Ensured scalability and maintainability of the backend infrastructure</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span class="skill">Flutter</span>
+      <span class="skill">Dart</span>
+      <span class="skill">Payment Gateway Integration</span>
+      <span class="skill">Backend Development</span>
+      <span class="skill">Version Control</span>
+      <span class="skill">Cloud Services</span>
+      <span class="skill">VPN Development</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Education</h2>
+    <p><strong>BS. Software Engineering</strong> - Comsats University, Lahore (July 2022)</p>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2024 Munibullah Shah. All rights reserved.</p>
+</footer>
+</body>
+</html>
