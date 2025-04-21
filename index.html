@@ -3,269 +3,641 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Munib's Portfolio</title>
+    <title>Munibullah Shah - Flutter Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
         body {
             font-family: 'Poppins', sans-serif;
-            color: #333;
-            background: linear-gradient(120deg, #1f4037, #99f2c8);
-            margin: 0;
-            overflow-x: hidden;
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
         }
-
-        header {
-            background: rgba(0, 0, 0, 0.85);
-            color: #fff;
-            padding: 3rem 0;
-            text-align: center;
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+            transition: width 1s ease-in-out;
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            height: calc(100% - 24px);
+            width: 2px;
+            background-color: #cbd5e1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .nav-link {
             position: relative;
         }
-
-        header h1 {
-            font-size: 4rem;
-            animation: fadeIn 2s ease-in-out;
-            font-weight: bold;
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #6366f1;
+            transition: width 0.3s ease;
         }
-
-        header p {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-            opacity: 0.9;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        nav {
-            background: #111;
-            padding: 1rem 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav a {
-            color: #fff;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #99f2c8;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        section {
-            margin-bottom: 2rem;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            animation: slideUp 1s ease-in-out;
-        }
-
-        @keyframes slideUp {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        h2 {
-            color: #222;
-            margin-bottom: 1.5rem;
-            font-size: 2.8rem;
-            border-bottom: 3px solid #99f2c8;
-            display: inline-block;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project {
-            border: none;
-            border-radius: 12px;
-            overflow: hidden;
-            background: linear-gradient(120deg, #1f4037, #99f2c8);
-            color: #fff;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .project:hover {
-            transform: scale(1.05);
-        }
-
-        .project img {
+        
+        .nav-link:hover::after {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
         }
-
-        .project h3 {
-            margin: 1rem 0;
-            font-size: 2rem;
+        
+        .active::after {
+            width: 100%;
         }
-
-        .project a {
-            display: inline-block;
-            margin: 1rem;
-            padding: 0.7rem 1.5rem;
-            color: #fff;
-            background: #222;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: background 0.3s ease;
-        }
-
-        .project a:hover {
-            background: #99f2c8;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            background: #111;
-            color: #fff;
-            margin-top: 2rem;
-        }
-
-        footer p {
-            font-size: 1.2rem;
-            opacity: 0.85;
-        }
-
-        .reviews {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .review {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            padding: 1.5rem;
-            text-align: center;
-            animation: slideUp 1s ease-in-out;
-        }
-
-        .review h3 {
-            color: #222;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .review p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            font-style: italic;
-        }
-
-        .review .client {
-            margin-top: 1rem;
-            font-weight: bold;
-            color: #333;
-        }
-
     </style>
 </head>
-<body>
-<header>
-    <h1>Welcome to Munib's World</h1>
-    <p>Crafting digital experiences that make a difference.</p>
-</header>
-<nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#contact">Contact</a>
-</nav>
-<div class="container">
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hi, I'm Munib—a passionate Flutter mobile developer with 3 years of experience. My focus is on designing efficient, scalable, and visually appealing mobile applications that elevate user experiences. Let’s build something exceptional together.</p>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects">
-            <div class="project">
-                <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/78/65/b5/7865b501-4c2c-b15b-a3d5-fd6d474cec4f/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/292x0w.webp" alt="Project 1">
-                <h3>SuperHero: eSIM</h3>
-                <a href="https://apps.apple.com/pk/app/superhero-esim-travel-data/id6504882410" target="_blank">View App</a>
-            </div>
-            <div class="project">
-                <img src="https://play-lh.googleusercontent.com/UnDNcsOZcTObLDYbQ4Uh3XY_IqVzuoLfqKQ2t0J9-VseK_bC_LvLGalvHZaemslNuQ=w480-h960-rw" alt="Project 2">
-                <h3>Rescue Employee</h3>
-                <a href="https://play.google.com/store/apps/details?id=com.hoboetech.rescue.employee&hl=en" target="_blank">View App</a>
-            </div>
-            <div class="project">
-                <img src="https://play-lh.googleusercontent.com/jIGNy9BL2G3v6KtbsWq-_qwylnI6GgY-JEg12WQlZ4ooi7zfya8nHJqK6xsr6kuJW6r4=w480-h960-rw" alt="Project 3">
-                <h3>Bahria Plus</h3>
-                <a href="https://apps.apple.com/ca/app/bahria-plus-properties-ceos/id1510627423" target="_blank">View App</a>
+<body class="text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-indigo-600">Munibullah Shah</div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-white w-full px-6 py-3" id="mobile-menu">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
         </div>
-    </section>
-    <section id="skills">
-        <h2>Skills</h2>
-        <p>Flutter, Dart, Node.js, Firebase, Stripe Integration, REST APIs, Responsive UI Design</p>
-    </section>
-    <section id="reviews">
-        <h2>Client Reviews</h2>
-        <div class="reviews">
-            <div class="review">
-                <h3>"Fantastic Developer!"</h3>
-                <p>Munib delivered beyond expectations and ensured that the app was functional, scalable, and visually appealing. Highly recommended!</p>
-                <p class="client">- Upwork Client</p>
-            </div>
-            <div class="review">
-                <h3>"Great Communication and Results"</h3>
-                <p>Working with Munib was a breeze. He kept me updated throughout the process and delivered exactly what was promised. Exceptional skills!</p>
-                <p class="client">- Upwork Client</p>
-            </div>
-            <div class="review">
-                <h3>"Highly Skilled and Reliable"</h3>
-                <p>Munib's technical expertise and dedication to quality are unmatched. He turned my idea into a polished product. A pleasure to work with!</p>
-                <p class="client">- Upwork Client</p>
-            </div>
-        </div>
-    </section>
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>If you’d like to work together or have any questions, feel free to reach out:</p>
-        <p>Email me! <a href="mailto:munib@example.com">munibs47@gmail.com</a></p>
-        <p>Lets connect on <a href="https://www.linkedin.com/in/munibullah-shah/">LinkedIn</a></p>
+    </header>
 
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-indigo-200">Munibullah Shah</span></h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6">Flutter & Android Developer</h2>
+                <p class="text-lg mb-8 text-indigo-100">Experienced Developer with 3+ years in creating mobile applications based on specific requirements.</p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-indigo-50 transition duration-300">Hire Me</a>
+                    <a href="#about" class="border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition duration-300">Learn More</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-64 h-64 md:w-80 md:h-80 bg-indigo-400 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                    <!-- Placeholder for profile image -->
+                    <div class="w-full h-full bg-indigo-300 flex items-center justify-center">
+                        <i class="fas fa-user text-6xl text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-</div>
-<footer>
-    <p>© 2025 Munib. All Rights Reserved.</p>
-</footer>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">About Me</h2>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 bg-indigo-100 rounded-lg shadow-md overflow-hidden">
+                        <!-- Placeholder for about image -->
+                        <div class="w-full h-full bg-indigo-200 flex items-center justify-center">
+                            <i class="fas fa-code text-6xl text-indigo-600"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Professional Summary</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        Adaptable, diligent, and knowledgeable developer with expertise in Java, Node.js, Flutter and Dart. 
+                        I have successfully developed and deployed multiple mobile applications, integrating various APIs 
+                        and services to deliver seamless user experiences.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                    <i class="fas fa-mobile-alt text-indigo-600"></i>
+                                </div>
+                                <h4 class="font-semibold">Mobile Development</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm">
+                                Specialized in Flutter and Android development with experience in native Android bug fixing and optimization.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                    <i class="fas fa-server text-indigo-600"></i>
+                                </div>
+                                <h4 class="font-semibold">Backend Integration</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm">
+                                Experienced in Node.js backend development and integrating various APIs including Google Maps, Mapbox, and Firebase services.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://linkedin.com/in/munibullah-shah" target="_blank" class="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                            <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+                        </a>
+                        <a href="mailto:munibs47@gmail.com" class="flex items-center bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition">
+                            <i class="fas fa-envelope mr-2"></i> Email
+                        </a>
+                        <a href="tel:+923120944035" class="flex items-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                            <i class="fas fa-phone mr-2"></i> Call Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Work Experience</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Hoboetech -->
+                <div class="timeline-item relative pl-8 mb-12">
+                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100"></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">Software Engineer (Android/Flutter)</h3>
+                            <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">09/2022 - 12/2023</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3">Hoboetech | Lahore</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Worked on more than 5 mobile applications from conception to deployment</li>
+                            <li>Successfully integrated Google Maps and Mapbox with advanced features like polylines</li>
+                            <li>Proficient in Firebase services including authentication, real-time databases, and cloud functions</li>
+                            <li>Implemented background services and leveraged Google ML Kit for machine learning</li>
+                            <li>Developed three mobile applications from scratch independently</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- AGATO Legal Translation -->
+                <div class="timeline-item relative pl-8 mb-12">
+                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100"></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">Flutter Developer</h3>
+                            <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">12/2023 - 03/2024</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3">AGATO Legal Translation | Remote</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Added 5 major features to WirdBook (Quranic App)</li>
+                            <li>Debugged complex software issues leading to more stable releases</li>
+                            <li>Enhanced user experience with responsive mobile designs</li>
+                            <li>Streamlined code for faster load times and improved performance</li>
+                            <li>Continuously updated skills through training and self-study</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- IOI Technologies -->
+                <div class="timeline-item relative pl-8 mb-12">
+                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100"></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">Flutter Intern</h3>
+                            <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">02/2021 - 09/2021</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3">IOI Technologies | Lahore</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Contributed to UI development for mobile applications</li>
+                            <li>Utilized state management libraries like GetX and Provider</li>
+                            <li>Engaged in bug-fixing and code optimization</li>
+                            <li>Participated in improving application performance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Freelance -->
+                <div class="timeline-item relative pl-8">
+                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100"></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">Freelance Developer</h3>
+                            <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">02/2019 - 09/2021</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3">Upwork/Fiverr | Remote</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Collaborated with multiple clients on diverse Flutter projects</li>
+                            <li>Employed Node.js for backend development and API integration</li>
+                            <li>Leveraged Google Cloud services for scalable applications</li>
+                            <li>Translated client needs into technical specifications</li>
+                            <li>Implemented bug-fixes and code optimizations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Skills & Expertise</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Technical Skills -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold mb-6 text-indigo-600 flex items-center">
+                        <i class="fas fa-code mr-3"></i> Technical Skills
+                    </h3>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Flutter & Dart</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Android Development</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Node.js</span>
+                                <span class="text-gray-600">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">API Integration</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Technologies -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold mb-6 text-indigo-600 flex items-center">
+                        <i class="fas fa-tools mr-3"></i> Tools & Technologies
+                    </h3>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Firebase Services</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Git & GitHub</span>
+                                <span class="text-gray-600">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Android Studio</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">VS Code</span>
+                                <span class="text-gray-600">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Frameworks & Languages -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-sm mb-12">
+                <h3 class="text-xl font-bold mb-6 text-indigo-600 flex items-center">
+                    <i class="fas fa-layer-group mr-3"></i> Frameworks & Languages
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Flutter Framework</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Dart Core</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Java</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Node.js</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">GetX</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Provider</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Firebase</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Google Maps API</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Mapbox</span>
+                </div>
+            </div>
+            
+            <!-- Education -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-bold mb-6 text-indigo-600 flex items-center">
+                    <i class="fas fa-graduation-cap mr-3"></i> Education
+                </h3>
+                <div class="flex items-start">
+                    <div class="mr-4 mt-1">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
+                            <i class="fas fa-university text-indigo-600"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold">Bachelor of Science in Software Engineering</h4>
+                        <p class="text-gray-700">COMSATS University Islamabad, Lahore Campus</p>
+                        <p class="text-gray-500 text-sm">Graduated: 2021</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Get In Touch</h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Contact Info -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-6 text-indigo-600">Contact Information</h3>
+                    
+                    <div class="space-y-5">
+                        <div class="flex items-start">
+                            <div class="mr-4 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-indigo-600"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Location</h4>
+                                <p class="text-gray-600">Islamabad, 47040</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="mr-4 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                                    <i class="fas fa-envelope text-indigo-600"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-600">munibs47@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="mr-4 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                                    <i class="fas fa-phone text-indigo-600"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p class="text-gray-600">+92 312 0944035</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="mr-4 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                                    <i class="fab fa-linkedin-in text-indigo-600"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">LinkedIn</h4>
+                                <a href="https://linkedin.com/in/munibullah-shah" target="_blank" class="text-indigo-600 hover:underline">linkedin.com/in/munibullah-shah</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-3">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-indigo-100 transition">
+                                <i class="fab fa-github text-gray-700"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-indigo-100 transition">
+                                <i class="fab fa-twitter text-gray-700"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-indigo-100 transition">
+                                <i class="fab fa-instagram text-gray-700"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-indigo-100 transition">
+                                <i class="fab fa-facebook-f text-gray-700"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-6 text-indigo-600">Send Me a Message</h3>
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="text-2xl font-bold text-indigo-400">Munibullah Shah</div>
+                    <p class="text-gray-400 mt-1">Flutter & Android Developer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#experience" class="text-gray-400 hover:text-white transition">Experience</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Munibullah Shah. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Highlight active navigation link based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Animate skill bars on scroll
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        }
+
+        // Intersection Observer for skill bars animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+    </script>
 </body>
 </html>
