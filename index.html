@@ -70,13 +70,84 @@
         .active::after {
             width: 100%;
         }
+        
+        /* Brand Colors */
+        .flutter-green {
+            color: #46D1FD;
+        }
+        .dart-blue {
+            color: #0175C2;
+        }
+        .firebase-orange {
+            color: #FFCA28;
+        }
+        .google-blue {
+            color: #4285F4;
+        }
+        .google-red {
+            color: #EA4335;
+        }
+        .google-yellow {
+            color: #FBBC05;
+        }
+        .google-green {
+            color: #34A853;
+        }
+        .apple-gray {
+            color: #A2AAAD;
+        }
+        
+        /* Logo styles */
+        .tech-logo {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .store-badge {
+            height: 40px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .store-badge:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Fix for Google Play badge size to match App Store */
+        .google-play-badge {
+            height: 40px;
+            width: auto;
+            max-width: 135px;
+            object-fit: contain;
+        }
+        
+        /* Highlighted name styling */
+        .highlight-name {
+            background: linear-gradient(90deg, #ffffff, #d8b4fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Specific styling for the header name */
+        .header-name {
+            color: #6366f1;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+        }
     </style>
 </head>
 <body class="text-gray-800">
     <!-- Header/Navigation -->
     <header class="fixed w-full bg-white shadow-sm z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="text-2xl font-bold text-indigo-600">Munibullah Shah</div>
+            <div class="text-2xl font-bold header-name">Munibullah Shah</div>
             <nav class="hidden md:flex space-x-8">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#about" class="nav-link">About</a>
@@ -108,7 +179,7 @@
     <section id="home" class="pt-32 pb-20 gradient-bg text-white">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-indigo-200">Munibullah Shah</span></h1>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-white font-bold">Munibullah Shah</span></h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-6">Flutter & Android Developer</h2>
                 <p class="text-lg mb-8 text-indigo-100">Experienced Developer with 3+ years in creating mobile applications based on specific requirements.</p>
                 <div class="flex space-x-4">
@@ -118,10 +189,8 @@
             </div>
             <div class="md:w-1/2 flex justify-center">
                 <div class="w-64 h-64 md:w-80 md:h-80 bg-indigo-400 rounded-full overflow-hidden border-4 border-white shadow-xl">
-                    <!-- Placeholder for profile image -->
-                    <div class="w-full h-full bg-indigo-300 flex items-center justify-center">
-                        <i class="fas fa-user text-6xl text-white"></i>
-                    </div>
+                    <!-- Profile image -->
+                    <img src="https://avatars.githubusercontent.com/u/49975985?v=4" alt="Munibullah Shah" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -134,10 +203,8 @@
             <div class="flex flex-col md:flex-row">
                 <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
                     <div class="w-64 h-64 bg-indigo-100 rounded-lg shadow-md overflow-hidden">
-                        <!-- Placeholder for about image -->
-                        <div class="w-full h-full bg-indigo-200 flex items-center justify-center">
-                            <i class="fas fa-code text-6xl text-indigo-600"></i>
-                        </div>
+                        <!-- About image -->
+                        <img src="https://avatars.githubusercontent.com/u/49975985?v=4" alt="Munibullah Shah" class="w-full h-full object-cover">
                     </div>
                 </div>
                 <div class="md:w-2/3 md:pl-12">
@@ -280,7 +347,10 @@
                 <!-- SuperHero eSIM -->
                 <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-3">SuperHero eSIM</h3>
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-sim-card text-indigo-500 mr-2"></i>
+                            SuperHero eSIM
+                        </h3>
                         <p class="text-gray-700 mb-4">A comprehensive eSIM solution for international travelers with Stripe integration and API implementation.</p>
                         <ul class="list-disc pl-5 mb-4 text-gray-700">
                             <li>User-friendly interface for eSIM browsing and purchasing</li>
@@ -288,12 +358,12 @@
                             <li>Seamless eSIM activation process</li>
                             <li>Support for multiple countries and regions</li>
                         </ul>
-                        <div class="flex space-x-4">
-                            <a href="https://apps.apple.com/pk/app/superhero-esim-travel-data/id6504882410" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-apple"></i> App Store
+                        <div class="flex items-center">
+                            <a href="https://apps.apple.com/pk/app/superhero-esim-travel-data/id6504882410" target="_blank">
+                                <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on App Store" class="store-badge">
                             </a>
-                            <a href="https://play.google.com/store/apps/details?id=com.superhero.esim.travel.roaming.data" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-google-play"></i> Play Store
+                            <a href="https://play.google.com/store/apps/details?id=com.superhero.esim.travel.roaming.data" target="_blank">
+                                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="store-badge google-play-badge">
                             </a>
                         </div>
                     </div>
@@ -302,7 +372,10 @@
                 <!-- Healix AI -->
                 <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-3">Healix AI</h3>
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-heartbeat text-red-500 mr-2"></i>
+                            Healix AI
+                        </h3>
                         <p class="text-gray-700 mb-4">An AI-powered healthcare application providing personalized health insights and recommendations.</p>
                         <ul class="list-disc pl-5 mb-4 text-gray-700">
                             <li>AI-driven health analysis and recommendations</li>
@@ -310,12 +383,12 @@
                             <li>Real-time health monitoring features</li>
                             <li>User-friendly health tracking interface</li>
                         </ul>
-                        <div class="flex space-x-4">
-                            <a href="https://apps.apple.com/us/app/healix-ai/id6743965106" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-apple"></i> App Store
+                        <div class="flex items-center">
+                            <a href="https://apps.apple.com/us/app/healix-ai/id6743965106" target="_blank">
+                                <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on App Store" class="store-badge">
                             </a>
-                            <a href="https://play.google.com/store/apps/details?id=com.healixai.healix" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-google-play"></i> Play Store
+                            <a href="https://play.google.com/store/apps/details?id=com.healixai.healix" target="_blank">
+                                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="store-badge google-play-badge">
                             </a>
                         </div>
                     </div>
@@ -324,7 +397,10 @@
                 <!-- Zameeli -->
                 <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-3">Zameeli</h3>
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-building text-blue-500 mr-2"></i>
+                            Zameeli
+                        </h3>
                         <p class="text-gray-700 mb-4">A real estate and property management application for the Middle East market.</p>
                         <ul class="list-disc pl-5 mb-4 text-gray-700">
                             <li>Property listing and search functionality</li>
@@ -332,9 +408,9 @@
                             <li>Location-based property search</li>
                             <li>Real-time property updates and notifications</li>
                         </ul>
-                        <div class="flex space-x-4">
-                            <a href="https://apps.apple.com/om/app/zameeli/id6448743957" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-apple"></i> App Store
+                        <div class="flex items-center">
+                            <a href="https://apps.apple.com/om/app/zameeli/id6448743957" target="_blank">
+                                <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on App Store" class="store-badge">
                             </a>
                         </div>
                     </div>
@@ -343,7 +419,10 @@
                 <!-- Rescue -->
                 <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-3">Rescue</h3>
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-ambulance text-red-600 mr-2"></i>
+                            Rescue
+                        </h3>
                         <p class="text-gray-700 mb-4">An emergency response and rescue management application.</p>
                         <ul class="list-disc pl-5 mb-4 text-gray-700">
                             <li>Real-time location tracking for emergency services</li>
@@ -351,9 +430,9 @@
                             <li>Mapping and navigation features</li>
                             <li>Efficient communication channels for emergency response</li>
                         </ul>
-                        <div class="flex space-x-4">
-                            <a href="https://play.google.com/store/apps/details?id=com.hoboetech.rescue.employee" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-google-play"></i> Play Store
+                        <div class="flex items-center">
+                            <a href="https://play.google.com/store/apps/details?id=com.hoboetech.rescue.employee" target="_blank">
+                                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="store-badge google-play-badge">
                             </a>
                         </div>
                     </div>
@@ -362,7 +441,10 @@
                 <!-- Bahria Plus -->
                 <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-3">Bahria Plus</h3>
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-home text-green-600 mr-2"></i>
+                            Bahria Plus
+                        </h3>
                         <p class="text-gray-700 mb-4">A real-estate marketing application for Bahria Town.</p>
                         <ul class="list-disc pl-5 mb-4 text-gray-700">
                             <li>Real-time property listings and search</li>
@@ -370,12 +452,12 @@
                             <li>Responsive UI components</li>
                             <li>Cross-functional team collaboration</li>
                         </ul>
-                        <div class="flex space-x-4">
-                            <a href="https://apps.apple.com/ca/app/ilaaqa-com-bahria-plus/id1510627423" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-apple"></i> App Store
+                        <div class="flex items-center">
+                            <a href="https://apps.apple.com/ca/app/ilaaqa-com-bahria-plus/id1510627423" target="_blank">
+                                <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on App Store" class="store-badge">
                             </a>
-                            <a href="https://play.google.com/store/apps/details?id=com.ioi.directory.bahria_plus" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-google-play"></i> Play Store
+                            <a href="https://play.google.com/store/apps/details?id=com.ioi.directory.bahria_plus" target="_blank">
+                                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="store-badge google-play-badge">
                             </a>
                         </div>
                     </div>
@@ -384,7 +466,10 @@
                 <!-- FashionXotics -->
                 <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-3">FashionXotics</h3>
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-tshirt text-purple-600 mr-2"></i>
+                            FashionXotics
+                        </h3>
                         <p class="text-gray-700 mb-4">A global marketplace for clothing, perfumes, and lifestyle products.</p>
                         <ul class="list-disc pl-5 mb-4 text-gray-700">
                             <li>E-commerce platform for fashion and lifestyle products</li>
@@ -392,9 +477,9 @@
                             <li>User-friendly shopping experience</li>
                             <li>Global shipping and delivery tracking</li>
                         </ul>
-                        <div class="flex space-x-4">
-                            <a href="https://play.google.com/store/apps/details?id=com.munibullahshah.fashion_xotics" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-google-play"></i> Play Store
+                        <div class="flex items-center">
+                            <a href="https://play.google.com/store/apps/details?id=com.munibullahshah.fashion_xotics" target="_blank">
+                                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="store-badge google-play-badge">
                             </a>
                         </div>
                     </div>
@@ -407,6 +492,9 @@
     <section id="feedback" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Client Feedback</h2>
+            <div class="flex justify-center mb-8">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Upwork-logo.svg" alt="Upwork" class="h-10">
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Feedback 1 -->
                 <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white">
@@ -588,15 +676,42 @@
                     <i class="fas fa-layer-group mr-3"></i> Frameworks & Languages
                 </h3>
                 <div class="flex flex-wrap gap-3">
-                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Flutter Framework</span>
-                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Dart Core</span>
-                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Java</span>
-                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Node.js</span>
-                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">GetX</span>
-                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Provider</span>
-                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Firebase</span>
-                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Google Maps API</span>
-                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">Mapbox</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full flex items-center">
+                        <img src="https://storage.googleapis.com/cms-storage-bucket/ec64036b4eacc9f3fd73.svg" alt="Flutter" class="tech-logo">
+                        Flutter Framework
+                    </span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full flex items-center">
+                        <img src="https://dart.dev/assets/img/logo/dart-logo-for-shares.png" alt="Dart" class="tech-logo">
+                        Dart Core
+                    </span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full flex items-center">
+                        <img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="Java" class="tech-logo">
+                        Java
+                    </span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full flex items-center">
+                        <img src="https://nodejs.org/static/images/logo.svg" alt="Node.js" class="tech-logo">
+                        Node.js
+                    </span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full flex items-center">
+                        <img src="https://raw.githubusercontent.com/jonataslaw/getx-community/master/getx.png" alt="GetX" class="tech-logo">
+                        GetX
+                    </span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full flex items-center">
+                        <img src="https://raw.githubusercontent.com/rrousselGit/provider/master/resources/flutter_favorite.png" alt="Provider" class="tech-logo">
+                        Provider
+                    </span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full flex items-center">
+                        <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="Firebase" class="tech-logo">
+                        Firebase
+                    </span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full flex items-center">
+                        <img src="https://developers.google.com/static/maps/images/maps-icon.svg" alt="Google Maps" class="tech-logo">
+                        Google Maps API
+                    </span>
+                    <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full flex items-center">
+                        <img src="https://avatars.githubusercontent.com/u/600935?s=280&v=4" alt="Mapbox" class="tech-logo">
+                        Mapbox
+                    </span>
                 </div>
             </div>
             
