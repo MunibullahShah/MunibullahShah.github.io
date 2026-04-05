@@ -43,9 +43,23 @@
             background-color: #cbd5e1;
         }
         
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        @media (hover: hover) {
+            .project-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .store-badge, .google-play-badge {
+                height: 32px;
+            }
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+            .timeline-item .bg-white.p-6 {
+                padding: 1rem;
+            }
         }
         
         .nav-link {
@@ -178,14 +192,14 @@
     <!-- Hero Section -->
     <section id="home" class="pt-32 pb-20 gradient-bg text-white">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
+            <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
                 <div class="inline-flex items-center gap-2 bg-white bg-opacity-20 text-white text-sm px-4 py-1.5 rounded-full mb-4 font-medium">
                     <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> Available for new opportunities
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-white font-bold">Munibullah Shah</span></h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-4">Flutter & Mobile Developer</h2>
-                <p class="text-lg mb-8 text-indigo-100">5+ years building production-grade iOS & Android apps — from clean architecture and state management to payment integrations, AI features, and Firebase infrastructure. 10+ apps shipped, all with 5-star client reviews.</p>
-                <div class="flex flex-wrap gap-3">
+                <h1 class="text-3xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-white font-bold">Munibullah Shah</span></h1>
+                <h2 class="text-xl md:text-3xl font-semibold mb-4">Flutter & Mobile Developer</h2>
+                <p class="text-base md:text-lg mb-8 text-indigo-100">5+ years building production-grade iOS & Android apps — from clean architecture and state management to payment integrations, AI features, and Firebase infrastructure. 10+ apps shipped, all with 5-star client reviews.</p>
+                <div class="flex flex-wrap gap-3 justify-center md:justify-start">
                     <a href="https://www.upwork.com/freelancers/~016c2530416635e76e?mp_source=share" target="_blank" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-indigo-50 transition duration-300">Hire Me on Upwork</a>
                     <a href="#projects" class="border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition duration-300">View My Work</a>
                 </div>
@@ -216,7 +230,7 @@
                     <div class="text-gray-500 text-sm mt-1">Upwork Rating</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-bold text-indigo-600">iOS & Android</div>
+                    <div class="text-xl md:text-3xl font-bold text-indigo-600">iOS & Android</div>
                     <div class="text-gray-500 text-sm mt-1">Cross-Platform</div>
                 </div>
             </div>
@@ -298,7 +312,7 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Work Experience</h2>
             
-            <div class="max-w-3xl mx-auto">
+            <div class="max-w-3xl mx-auto px-0 md:px-0">
                 <!-- Ambeego -->
                 <div class="timeline-item relative pl-8 mb-12">
                     <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100"></div>
@@ -463,7 +477,7 @@
             <!-- Baby Resume App - Featured Project -->
             <div class="mb-12">
                 <!-- Header -->
-                <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 rounded-2xl p-8 mb-6 text-white relative overflow-hidden">
+                <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 rounded-2xl p-5 md:p-8 mb-6 text-white relative overflow-hidden">
                     <div class="absolute top-0 right-0 opacity-10">
                         <img src="yes/api/placeholder/bg_stars.png" alt="" class="w-64 h-64 object-cover">
                     </div>
@@ -625,7 +639,7 @@
             <!-- Healix AI - Featured Project -->
             <div class="mb-12">
                 <!-- Header -->
-                <div class="bg-gradient-to-r from-red-500 via-rose-500 to-orange-400 rounded-2xl p-8 mb-6 text-white relative overflow-hidden">
+                <div class="bg-gradient-to-r from-red-500 via-rose-500 to-orange-400 rounded-2xl p-5 md:p-8 mb-6 text-white relative overflow-hidden">
                     <div class="absolute top-0 right-0 opacity-20">
                         <img src="yes/api/placeholder/healix_bg.png" alt="" class="w-64 h-64 object-cover">
                     </div>
@@ -643,7 +657,7 @@
                             <p class="text-red-100 leading-relaxed max-w-2xl">
                                 An AI-powered healthcare app delivering personalized health insights, meal recommendations, and real-time health monitoring. Built with Flutter (iOS & Android), a Python Firebase Cloud Functions backend, and OpenAI GPT — featuring subscription management, local chat caching, and MealMe food ordering integration.
                             </p>
-                            <div class="flex gap-3 mt-4 justify-center md:justify-start">
+                            <div class="flex flex-wrap gap-3 mt-4 justify-center md:justify-start">
                                 <a href="https://apps.apple.com/us/app/healix-ai/id6743965106" target="_blank">
                                     <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on App Store" class="store-badge h-8">
                                 </a>
