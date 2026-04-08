@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Munibullah Shah - Flutter Developer</title>
+    <title>Munibullah Shah - Flutter, Full-Stack & Data Engineer</title>
+    <meta name="description" content="Munibullah Shah — Flutter Mobile Developer, Backend Developer, and Data Engineer with 5+ years shipping production apps. Node.js, Firebase, Python, pandas, SQL, ETL pipelines.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -197,8 +198,8 @@
                     <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> Available for new opportunities
                 </div>
                 <h1 class="text-3xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-white font-bold">Munibullah Shah</span></h1>
-                <h2 class="text-xl md:text-3xl font-semibold mb-4">Flutter & Mobile Developer</h2>
-                <p class="text-base md:text-lg mb-8 text-indigo-100">5+ years building production-grade iOS & Android apps — from clean architecture and state management to payment integrations, AI features, and Firebase infrastructure. 10+ apps shipped, all with 5-star client reviews.</p>
+                <h2 class="text-xl md:text-3xl font-semibold mb-4">Flutter, Full-Stack & Data Engineer</h2>
+                <p class="text-base md:text-lg mb-8 text-indigo-100">5+ years delivering production-grade mobile apps, Node.js/Firebase backends, and Python data engineering pipelines — clean architecture, AI features, ETL workflows, and 5-star client reviews across 10+ shipped apps.</p>
                 <div class="flex flex-wrap gap-3 justify-center md:justify-start">
                     <a href="https://www.upwork.com/freelancers/~016c2530416635e76e?mp_source=share" target="_blank" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-indigo-50 transition duration-300">Hire Me on Upwork</a>
                     <a href="#projects" class="border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition duration-300">View My Work</a>
@@ -230,8 +231,8 @@
                     <div class="text-gray-500 text-sm mt-1">Upwork Rating</div>
                 </div>
                 <div>
-                    <div class="text-xl md:text-3xl font-bold text-indigo-600">iOS & Android</div>
-                    <div class="text-gray-500 text-sm mt-1">Cross-Platform</div>
+                    <div class="text-xl md:text-3xl font-bold text-indigo-600">Mobile + Data</div>
+                    <div class="text-gray-500 text-sm mt-1">Full-Stack Scope</div>
                 </div>
             </div>
         </div>
@@ -251,7 +252,7 @@
                 <div class="md:w-2/3 md:pl-12">
                     <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Professional Summary</h3>
                     <p class="text-gray-700 mb-6 leading-relaxed">
-                        Flutter & Mobile Developer with 5+ years of end-to-end experience building and shipping production apps on the App Store and Google Play. I specialize in clean architecture, scalable state management (BLOC/Cubit, Provider), and full-stack feature delivery — from Firebase infrastructure and REST API integration to in-app payments and AI-powered features. Known for strong ownership, cross-timezone availability, and consistently delivering on time.
+                        Flutter, Full-Stack & Data Engineer with 5+ years of end-to-end experience building and shipping production apps on the App Store and Google Play. I specialize in clean architecture, scalable state management (BLOC/Cubit, Provider), and full-stack feature delivery — from Firebase infrastructure and Node.js REST APIs to in-app payments and AI features. As paid client work, I also build Python data engineering pipelines: ETL workflows, data cleaning and transformation with pandas, and SQL-based reporting. Known for strong ownership, cross-timezone availability, and consistently delivering on time.
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                         <div class="bg-gray-50 p-4 rounded-lg">
@@ -472,10 +473,18 @@
     <!-- Projects Section -->
     <section id="projects" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Featured Projects</h2>
-            
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Projects</h2>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap gap-2 justify-center mb-10" id="project-tabs">
+                <button class="project-tab px-5 py-2 rounded-full text-sm font-medium transition duration-200 bg-indigo-600 text-white" data-tab="all">All</button>
+                <button class="project-tab px-5 py-2 rounded-full text-sm font-medium transition duration-200 bg-gray-100 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600" data-tab="mobile">Mobile Apps</button>
+                <button class="project-tab px-5 py-2 rounded-full text-sm font-medium transition duration-200 bg-gray-100 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600" data-tab="backend">Backend &amp; APIs</button>
+                <button class="project-tab px-5 py-2 rounded-full text-sm font-medium transition duration-200 bg-gray-100 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600" data-tab="data">Data &amp; Pipelines</button>
+            </div>
+
             <!-- Baby Resume App - Featured Project -->
-            <div class="mb-12">
+            <div class="mb-12" data-categories="mobile backend">
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 rounded-2xl p-5 md:p-8 mb-6 text-white relative overflow-hidden">
                     <div class="absolute top-0 right-0 opacity-10">
@@ -495,7 +504,15 @@
                             <p class="text-indigo-100 leading-relaxed max-w-2xl">
                                 A comprehensive platform for capturing, documenting, and sharing baby milestones with a beautifully generated resume. Built with Flutter (iOS & Android), a Node.js backend, and Firebase infrastructure — featuring 37+ screens, subscription management, content management, and analytics.
                             </p>
-                            <div class="mt-4">
+                            <div class="flex flex-wrap gap-2 mt-3 justify-center md:justify-start">
+                                <span class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 text-white text-xs px-3 py-1 rounded-full font-medium">
+                                    <i class="fas fa-rocket text-xs"></i> In Active Development
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 text-white text-xs px-3 py-1 rounded-full font-medium">
+                                    <i class="fas fa-globe text-xs"></i> Live at babyresume.com
+                                </span>
+                            </div>
+                            <div class="mt-3">
                                 <a href="https://www.babyresume.com/" target="_blank" class="inline-flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-300">
                                     <i class="fas fa-globe"></i> www.babyresume.com
                                 </a>
@@ -637,7 +654,7 @@
             </div>
 
             <!-- Healix AI - Featured Project -->
-            <div class="mb-12">
+            <div class="mb-12" data-categories="mobile backend">
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-red-500 via-rose-500 to-orange-400 rounded-2xl p-5 md:p-8 mb-6 text-white relative overflow-hidden">
                     <div class="absolute top-0 right-0 opacity-20">
@@ -657,7 +674,15 @@
                             <p class="text-red-100 leading-relaxed max-w-2xl">
                                 An AI-powered healthcare app delivering personalized health insights, meal recommendations, and real-time health monitoring. Built with Flutter (iOS & Android), a Python Firebase Cloud Functions backend, and OpenAI GPT — featuring subscription management, local chat caching, and MealMe food ordering integration.
                             </p>
-                            <div class="flex flex-wrap gap-3 mt-4 justify-center md:justify-start">
+                            <div class="flex flex-wrap gap-2 mt-3 justify-center md:justify-start">
+                                <span class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 text-white text-xs px-3 py-1 rounded-full font-medium">
+                                    <i class="fas fa-star text-yellow-300 text-xs"></i> 5.0 on App Store
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 text-white text-xs px-3 py-1 rounded-full font-medium">
+                                    <i class="fas fa-download text-xs"></i> 5K+ Downloads on Google Play
+                                </span>
+                            </div>
+                            <div class="flex flex-wrap gap-3 mt-3 justify-center md:justify-start">
                                 <a href="https://apps.apple.com/us/app/healix-ai/id6743965106" target="_blank">
                                     <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on App Store" class="store-badge h-8">
                                 </a>
@@ -800,11 +825,154 @@
                 </div>
             </div>
 
+            <!-- Toast POS ETL Pipeline - Featured Project -->
+            <div class="mb-12" data-categories="data">
+                <!-- Header -->
+                <div class="bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500 rounded-2xl p-5 md:p-8 mb-6 text-white relative overflow-hidden">
+                    <div class="flex flex-col md:flex-row items-center gap-6 relative z-10">
+                        <div class="flex-shrink-0">
+                            <div class="w-20 h-20 bg-white rounded-2xl p-3 shadow-lg flex items-center justify-center">
+                                <i class="fas fa-database text-4xl text-yellow-500"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="flex items-center gap-3 justify-center md:justify-start mb-2">
+                                <h3 class="text-2xl font-bold">Toast POS ETL Pipeline</h3>
+                                <span class="bg-white bg-opacity-20 text-white text-xs px-3 py-1 rounded-full font-medium">Data Engineering</span>
+                            </div>
+                            <p class="text-yellow-100 leading-relaxed max-w-2xl">
+                                End-to-end Python data pipeline that ingests restaurant sales data from the Toast POS API into PostgreSQL — normalising raw JSON payloads through a 4-phase ETL flow (Raw → Staging → Warehouse → Analytics) with a star schema, SCD dimension tracking, data quality gates, and daily cron scheduling with email alerting.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-project cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Ingestion Card -->
+                    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300 border border-gray-100">
+                        <div class="h-40 bg-gradient-to-br from-yellow-50 to-amber-50 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-cloud-download-alt text-7xl text-yellow-200"></i>
+                            <div class="absolute bottom-2 left-3">
+                                <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                                    <i class="fas fa-inbox mr-1"></i>Raw Ingestion
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="text-lg font-bold text-gray-800 mb-1">Raw Ingestion</h4>
+                            <p class="text-gray-500 text-sm mb-3">Fetches from Toast POS APIs and lands exact JSON payloads into the <code class="text-xs bg-gray-100 px-1 rounded">raw.*</code> schema as JSONB, with incremental windowing based on last successful run.</p>
+                            <ul class="space-y-1 mb-4">
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-yellow-500 mt-0.5 flex-shrink-0"></i>
+                                    Toast REST API client with session management
+                                </li>
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-yellow-500 mt-0.5 flex-shrink-0"></i>
+                                    JSONB landing zone per location &amp; date
+                                </li>
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-yellow-500 mt-0.5 flex-shrink-0"></i>
+                                    Incremental windowing from ETL run log
+                                </li>
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-yellow-500 mt-0.5 flex-shrink-0"></i>
+                                    Multi-location aware ingestion
+                                </li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Python</span>
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">PostgreSQL</span>
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">JSONB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Staging & Quality Card -->
+                    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300 border border-gray-100">
+                        <div class="h-40 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-filter text-7xl text-amber-200"></i>
+                            <div class="absolute bottom-2 left-3">
+                                <span class="bg-amber-600 text-white text-xs px-2 py-1 rounded-full font-medium">
+                                    <i class="fas fa-check-double mr-1"></i>Staging &amp; Quality
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="text-lg font-bold text-gray-800 mb-1">Staging & Quality</h4>
+                            <p class="text-gray-500 text-sm mb-3">Normalises raw payloads into a canonical grain (one row per menu item per check per order) and runs data quality gates before promotion.</p>
+                            <ul class="space-y-1 mb-4">
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                    Canonical grain: item × check × order
+                                </li>
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                    Null &amp; duplicate quality gate checks
+                                </li>
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                    Configurable staging transform logic
+                                </li>
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                    Skippable phase via <code class="text-xs bg-gray-100 px-1 rounded">--skip-staging</code>
+                                </li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Python</span>
+                                <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full">SQL</span>
+                                <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Data Quality</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Warehouse & Analytics Card -->
+                    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300 border border-gray-100">
+                        <div class="h-40 bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-chart-bar text-7xl text-orange-200"></i>
+                            <div class="absolute bottom-2 left-3">
+                                <span class="bg-orange-600 text-white text-xs px-2 py-1 rounded-full font-medium">
+                                    <i class="fas fa-warehouse mr-1"></i>Warehouse &amp; Analytics
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="text-lg font-bold text-gray-800 mb-1">Warehouse & Analytics</h4>
+                            <p class="text-gray-500 text-sm mb-3">Loads a star schema warehouse with SCD-aware dimension tables and publishes BI-facing analytics views. Scheduled daily via cron with email alerting.</p>
+                            <ul class="space-y-1 mb-4">
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-orange-500 mt-0.5 flex-shrink-0"></i>
+                                    Star schema: dim_location, dim_date, dim_menu_item
+                                </li>
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-orange-500 mt-0.5 flex-shrink-0"></i>
+                                    fact_sales_item with SCD menu item history
+                                </li>
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-orange-500 mt-0.5 flex-shrink-0"></i>
+                                    Analytics views for BI reporting
+                                </li>
+                                <li class="flex items-start gap-2 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-orange-500 mt-0.5 flex-shrink-0"></i>
+                                    Cron scheduling + Mailgun alerts
+                                </li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">PostgreSQL</span>
+                                <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded-full">Star Schema</span>
+                                <span class="bg-pink-100 text-pink-700 text-xs px-2 py-1 rounded-full">Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Other Projects -->
-            <h3 class="text-xl font-semibold text-gray-600 mb-6">Other Projects</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <h3 class="text-xl font-semibold text-gray-600 mb-6" id="other-projects-heading">Other Projects</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="other-projects-grid">
                 <!-- SuperHero eSIM -->
-                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-categories="mobile backend">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-indigo-600 mb-3">
                             <i class="fas fa-sim-card text-indigo-500 mr-2"></i>
@@ -817,6 +985,14 @@
                             <li>Seamless eSIM activation process</li>
                             <li>Support for multiple countries and regions</li>
                         </ul>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-700 border border-indigo-100 text-xs px-3 py-1 rounded-full font-medium">
+                                <i class="fas fa-star text-yellow-500 text-xs"></i> 5.0 on App Store
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-700 border border-indigo-100 text-xs px-3 py-1 rounded-full font-medium">
+                                <i class="fas fa-download text-xs"></i> 10K+ Downloads
+                            </span>
+                        </div>
                         <div class="flex items-center">
                             <a href="https://apps.apple.com/pk/app/superhero-esim-travel-data/id6504882410" target="_blank">
                                 <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on App Store" class="store-badge">
@@ -829,7 +1005,7 @@
                 </div>
 
                 <!-- Zameeli -->
-                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-categories="mobile">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-indigo-600 mb-3">
                             <i class="fas fa-building text-blue-500 mr-2"></i>
@@ -851,7 +1027,7 @@
                 </div>
 
                 <!-- Rescue -->
-                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-categories="mobile">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-indigo-600 mb-3">
                             <i class="fas fa-ambulance text-red-600 mr-2"></i>
@@ -864,6 +1040,14 @@
                             <li>Mapping and navigation features</li>
                             <li>Efficient communication channels for emergency response</li>
                         </ul>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-700 border border-indigo-100 text-xs px-3 py-1 rounded-full font-medium">
+                                <i class="fas fa-download text-xs"></i> 100K+ Downloads on Google Play
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 bg-amber-50 text-amber-800 border border-amber-200 text-xs px-3 py-1 rounded-full font-semibold">
+                                <i class="fas fa-landmark text-xs"></i> Used by Government Department
+                            </span>
+                        </div>
                         <div class="flex items-center">
                             <a href="https://play.google.com/store/apps/details?id=com.hoboetech.rescue.employee" target="_blank">
                                 <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="store-badge google-play-badge">
@@ -873,7 +1057,7 @@
                 </div>
 
                 <!-- Bahria Plus -->
-                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-categories="mobile">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-indigo-600 mb-3">
                             <i class="fas fa-home text-green-600 mr-2"></i>
@@ -898,7 +1082,7 @@
                 </div>
 
                 <!-- FashionXotics -->
-                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-categories="mobile">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-indigo-600 mb-3">
                             <i class="fas fa-tshirt text-purple-600 mr-2"></i>
@@ -915,6 +1099,123 @@
                             <a href="https://play.google.com/store/apps/details?id=com.munibullahshah.fashion_xotics" target="_blank">
                                 <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="store-badge google-play-badge">
                             </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- VPN Backend -->
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-categories="backend">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-shield-alt text-blue-600 mr-2"></i>
+                            VPN Backend API
+                        </h3>
+                        <p class="text-gray-700 mb-4">Node.js + Express backend for VPN account provisioning, WireGuard client config distribution, and subscription control via Firebase and Stripe.</p>
+                        <ul class="list-disc pl-5 mb-4 text-gray-700">
+                            <li>WireGuard client lifecycle management via upstream panel API</li>
+                            <li>Firebase Auth token verification and admin middleware</li>
+                            <li>Stripe subscription checkout, cancellation, and webhook sync</li>
+                            <li>Trial period management and subscription state in Firebase RTDB</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Node.js</span>
+                            <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full">Firebase</span>
+                            <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">Stripe</span>
+                            <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">WireGuard</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Uplead Contact API -->
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-categories="backend">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-address-book text-teal-600 mr-2"></i>
+                            Uplead Contact API
+                        </h3>
+                        <p class="text-gray-700 mb-4">Node.js + Express REST API for user auth, contact search and reveal workflows, and Stripe subscription billing on top of MongoDB.</p>
+                        <ul class="list-disc pl-5 mb-4 text-gray-700">
+                            <li>JWT auth with Stripe customer creation on registration</li>
+                            <li>Filtered contact search with per-plan reveal caps and counters</li>
+                            <li>Stripe Checkout session, subscription cancellation, and webhook handling</li>
+                            <li>MongoDB Atlas with Mongoose schemas for users, contacts, and payments</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Node.js</span>
+                            <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">MongoDB</span>
+                            <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">Stripe</span>
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">JWT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JSON from HTML Scraper -->
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-categories="data">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-code text-pink-600 mr-2"></i>
+                            JSON from HTML Extractor
+                        </h3>
+                        <p class="text-gray-700 mb-4">Python CLI tool that extracts embedded JSON payloads from HTML documents and exports them to CSV — designed for large datasets with chunked, memory-efficient processing.</p>
+                        <ul class="list-disc pl-5 mb-4 text-gray-700">
+                            <li>Streaming JSON parsing with ijson for large-file handling</li>
+                            <li>Configurable chunk size (default 10,000 records) with memory monitoring</li>
+                            <li>Optional field filtering and flattened nested dict output</li>
+                            <li>BeautifulSoup + lxml HTML parsing with 4 JSON script selectors</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Python</span>
+                            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">pandas</span>
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">BeautifulSoup</span>
+                            <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded-full">ETL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Scraper Incorporo -->
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-categories="data">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-spider text-red-600 mr-2"></i>
+                            Web Scraper (Incorporo)
+                        </h3>
+                        <p class="text-gray-700 mb-4">Python multi-variant web crawler with sequential, concurrent, and portfolio-safe modes — exports URL/title/headings/text to Excel.</p>
+                        <ul class="list-disc pl-5 mb-4 text-gray-700">
+                            <li>Concurrent crawler with ThreadPoolExecutor (up to 7,000 pages)</li>
+                            <li>Retry + exponential backoff for resilient scraping</li>
+                            <li>Domain-scoped crawl frontier with URL validation</li>
+                            <li>Chunked Excel export using pandas + openpyxl</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Python</span>
+                            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">pandas</span>
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">BeautifulSoup</span>
+                            <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Threading</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confidential Client ETL -->
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-categories="data">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">
+                            <i class="fas fa-lock text-indigo-500 mr-2"></i>
+                            ETL & Data Cleaning Pipeline
+                            <span class="ml-2 text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full font-normal">Confidential Client</span>
+                        </h3>
+                        <p class="text-gray-700 mb-4">End-to-end data pipeline built for a private client — ingests raw source data, applies multi-stage cleaning and transformation rules, and outputs structured datasets ready for downstream analysis.</p>
+                        <ul class="list-disc pl-5 mb-4 text-gray-700">
+                            <li>Multi-stage data cleaning with pandas (nulls, duplicates, type coercion)</li>
+                            <li>SQL-based aggregation and reporting queries</li>
+                            <li>Configurable transformation rules for schema normalisation</li>
+                            <li>Automated output to structured CSV/Excel for client delivery</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Python</span>
+                            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">pandas</span>
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">SQL</span>
+                            <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded-full">ETL</span>
                         </div>
                     </div>
                 </div>
@@ -1099,6 +1400,21 @@
                         <span class="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1.5 rounded-lg">Xcode</span>
                         <span class="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1.5 rounded-lg">Freezed / build_runner</span>
                         <span class="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1.5 rounded-lg">Google ML Kit</span>
+                    </div>
+                </div>
+
+                <!-- Data Engineering -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <h3 class="text-base font-bold mb-4 text-indigo-600 flex items-center gap-2">
+                        <i class="fas fa-database"></i> Data Engineering
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1.5 rounded-lg">Python</span>
+                        <span class="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1.5 rounded-lg">pandas</span>
+                        <span class="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1.5 rounded-lg">SQL</span>
+                        <span class="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1.5 rounded-lg">ETL Pipelines</span>
+                        <span class="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1.5 rounded-lg">Data Cleaning</span>
+                        <span class="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1.5 rounded-lg">Data Transformation</span>
                     </div>
                 </div>
             </div>
@@ -1309,6 +1625,45 @@
         if (skillsSection) {
             observer.observe(skillsSection);
         }
+
+        // Project filter tabs
+        function filterProjects(tab) {
+            // Update tab button styles
+            document.querySelectorAll('.project-tab').forEach(btn => {
+                const isActive = btn.dataset.tab === tab;
+                btn.classList.toggle('bg-indigo-600', isActive);
+                btn.classList.toggle('text-white', isActive);
+                btn.classList.toggle('bg-gray-100', !isActive);
+                btn.classList.toggle('text-gray-600', !isActive);
+            });
+
+            // Show/hide filterable project elements
+            document.querySelectorAll('[data-categories]').forEach(el => {
+                if (tab === 'all') {
+                    el.style.display = '';
+                } else {
+                    const cats = el.getAttribute('data-categories').split(' ');
+                    el.style.display = cats.includes(tab) ? '' : 'none';
+                }
+            });
+
+            // Show/hide "Other Projects" heading based on visible cards in the grid
+            const grid = document.getElementById('other-projects-grid');
+            const heading = document.getElementById('other-projects-heading');
+            if (grid && heading) {
+                const anyVisible = Array.from(grid.querySelectorAll('[data-categories]'))
+                    .some(el => el.style.display !== 'none');
+                heading.style.display = anyVisible ? '' : 'none';
+            }
+        }
+
+        // Wire up tab buttons
+        document.querySelectorAll('.project-tab').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                filterProjects(this.dataset.tab);
+            });
+        });
     </script>
 </body>
 </html>
