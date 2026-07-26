@@ -34,14 +34,16 @@
             transition: width 1s ease-in-out;
         }
         
-        .timeline-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 24px;
-            height: calc(100% - 24px);
-            width: 2px;
-            background-color: #cbd5e1;
+        @media (max-width: 767px) {
+            .timeline-item:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                left: 7px;
+                top: 24px;
+                height: calc(100% - 24px);
+                width: 2px;
+                background-color: #cbd5e1;
+            }
         }
         
         @media (hover: hover) {
@@ -242,19 +244,26 @@
     <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">About Me</h2>
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                    <div class="w-64 h-64 bg-indigo-100 rounded-lg shadow-md overflow-hidden">
-                        <!-- About image -->
-                        <img src="https://avatars.githubusercontent.com/u/49975985?v=4" alt="Munibullah Shah" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="md:w-2/3 md:pl-12">
+            <div class="flex flex-col md:flex-row md:gap-12">
+                <div class="md:w-1/2">
                     <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Professional Summary</h3>
                     <p class="text-gray-700 mb-6 leading-relaxed">
                         Flutter, Full-Stack & Data Engineer with 5+ years of end-to-end experience building and shipping production apps on the App Store and Google Play. I specialize in clean architecture, scalable state management (BLOC/Cubit, Provider), and full-stack feature delivery — from Firebase infrastructure and Node.js REST APIs to in-app payments and AI features. As paid client work, I also build Python data engineering pipelines: ETL workflows, data cleaning and transformation with pandas, and SQL-based reporting. Known for strong ownership, cross-timezone availability, and consistently delivering on time.
                     </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://linkedin.com/in/munibullah-shah" target="_blank" class="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                            <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+                        </a>
+                        <a href="mailto:munibs47@gmail.com" class="flex items-center bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition">
+                            <i class="fas fa-envelope mr-2"></i> Email
+                        </a>
+                        <a href="tel:+923120944035" class="flex items-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                            <i class="fas fa-phone mr-2"></i> Call Me
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-8 md:mt-0">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="bg-gray-50 p-4 rounded-lg">
                             <div class="flex items-center mb-2">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
@@ -292,17 +301,6 @@
                             <p class="text-gray-600 text-sm">OpenAI GPT integration, Google ML Kit, PostHog feature flags, and building data-driven features with real-time analytics.</p>
                         </div>
                     </div>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="https://linkedin.com/in/munibullah-shah" target="_blank" class="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-                            <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
-                        </a>
-                        <a href="mailto:munibs47@gmail.com" class="flex items-center bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition">
-                            <i class="fas fa-envelope mr-2"></i> Email
-                        </a>
-                        <a href="tel:+923120944035" class="flex items-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
-                            <i class="fas fa-phone mr-2"></i> Call Me
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -313,10 +311,14 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Work Experience</h2>
             
-            <div class="max-w-3xl mx-auto px-0 md:px-0">
+            <div id="experience-timeline" class="w-full relative">
+                <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none" style="z-index:0;">
+                    <path id="timeline-connector" fill="none" stroke="#cbd5e1" stroke-width="2" />
+                </svg>
+
                 <!-- Ambeego -->
-                <div class="timeline-item relative pl-8 mb-12">
-                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100"></div>
+                <div class="timeline-item relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:right-0">
+                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-0 md:-translate-x-1/2 md:top-6 z-10"></div>
                     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
                             <h3 class="text-xl font-bold text-indigo-600">Full Stack Mobile Developer</h3>
@@ -348,8 +350,8 @@
                 </div>
 
                 <!-- SuperHero Inc -->
-                <div class="timeline-item relative pl-8 mb-12">
-                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100"></div>
+                <div class="timeline-item relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:left-0">
+                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-auto md:right-0 md:translate-x-1/2 md:top-6 z-10"></div>
                     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
                             <div class="flex items-center gap-3">
@@ -381,8 +383,8 @@
                 </div>
 
                 <!-- Freelance -->
-                <div class="timeline-item relative pl-8 mb-12">
-                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100"></div>
+                <div class="timeline-item relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:right-0">
+                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-0 md:-translate-x-1/2 md:top-6 z-10"></div>
                     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
                             <div class="flex items-center gap-3">
@@ -413,8 +415,8 @@
                 </div>
 
                 <!-- Hoboetech -->
-                <div class="timeline-item relative pl-8 mb-12">
-                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100"></div>
+                <div class="timeline-item relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:left-0">
+                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-auto md:right-0 md:translate-x-1/2 md:top-6 z-10"></div>
                     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
                             <h3 class="text-xl font-bold text-indigo-600">Software Engineer — Android & Flutter</h3>
@@ -443,8 +445,8 @@
                 </div>
 
                 <!-- IOI Technologies -->
-                <div class="timeline-item relative pl-8 mb-12">
-                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100"></div>
+                <div class="timeline-item relative pl-8 md:pl-0 mb-0 md:absolute md:w-[36%] md:right-0">
+                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-0 md:-translate-x-1/2 md:top-6 z-10"></div>
                     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
                             <h3 class="text-xl font-bold text-indigo-600">Flutter Developer Intern</h3>
@@ -1322,6 +1324,51 @@
         </div>
     </section>
 
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800">Certifications</h2>
+            <p class="text-center text-gray-500 mb-12">
+                Google Skills badges &mdash;
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium">
+                    View Full Google Skills Profile <i class="fas fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                </a>
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15902036" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                    <img src="https://cdn.qwiklabs.com/GyZSP0weY7EGS%2B1vqP6iIxX4Ha2N%2B3Eqtes%2FE4PfVyg%3D" alt="Set Up an App Dev Environment on Google Cloud badge" class="w-20 h-20 mx-auto mb-3 object-contain">
+                    <h4 class="text-xs font-semibold text-gray-800 leading-snug">Set Up an App Dev Environment on Google Cloud</h4>
+                    <p class="text-gray-500 text-xs mt-1">May 2025</p>
+                </a>
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15689672" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                    <img src="https://cdn.qwiklabs.com/cjGVnoF%2FOdfhTVoDqKjUZhwt7oXFDcBmdki6VS4jkUk%3D" alt="Exploring Data Transformation with Google Cloud badge" class="w-20 h-20 mx-auto mb-3 object-contain">
+                    <h4 class="text-xs font-semibold text-gray-800 leading-snug">Exploring Data Transformation with Google Cloud</h4>
+                    <p class="text-gray-500 text-xs mt-1">May 2025</p>
+                </a>
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15688208" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                    <img src="https://cdn.qwiklabs.com/Cy%2ByNrCB45x%2B45f0JOF02vxfu6ApO7NnVVCfQ7lEMto%3D" alt="Digital Transformation with Google Cloud badge" class="w-20 h-20 mx-auto mb-3 object-contain">
+                    <h4 class="text-xs font-semibold text-gray-800 leading-snug">Digital Transformation with Google Cloud</h4>
+                    <p class="text-gray-500 text-xs mt-1">May 2025</p>
+                </a>
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15262598" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                    <img src="https://cdn.qwiklabs.com/yRip3NtLCP%2B5Sp77zf9QQxwG0kUYUjSEtYEK4b2WAts%3D" alt="Google Cloud Fundamentals: Core Infrastructure badge" class="w-20 h-20 mx-auto mb-3 object-contain">
+                    <h4 class="text-xs font-semibold text-gray-800 leading-snug">Google Cloud Fundamentals: Core Infrastructure</h4>
+                    <p class="text-gray-500 text-xs mt-1">Apr 2025</p>
+                </a>
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/14829195" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                    <img src="https://cdn.qwiklabs.com/O%2BUe1xXu46e%2ByFUgcqTBv9siZuDhaelyqyBtltnwA4E%3D" alt="Implementing Cloud Load Balancing for Compute Engine badge" class="w-20 h-20 mx-auto mb-3 object-contain">
+                    <h4 class="text-xs font-semibold text-gray-800 leading-snug">Implementing Cloud Load Balancing for Compute Engine</h4>
+                    <p class="text-gray-500 text-xs mt-1">Apr 2025</p>
+                </a>
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/287265" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                    <img src="https://cdn.qwiklabs.com/jsSYBfmx0HU2%2FS0jWJkOq61EBGLdXopfwcjxqGcmdq8%3D" alt="Google Cloud Essentials badge" class="w-20 h-20 mx-auto mb-3 object-contain">
+                    <h4 class="text-xs font-semibold text-gray-800 leading-snug">Google Cloud Essentials</h4>
+                    <p class="text-gray-500 text-xs mt-1">Jul 2020</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Client Feedback Section -->
     <section id="feedback" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
@@ -1643,6 +1690,63 @@
     </footer>
 
     <script>
+        // Stagger the experience timeline boxes (each box starts a little below
+        // the vertical half of the previous box) and draw a smooth curved line
+        // connecting the dots.
+        function layoutExperienceTimeline() {
+            const track = document.getElementById('experience-timeline');
+            const path = document.getElementById('timeline-connector');
+            if (!track) return;
+            const items = track.querySelectorAll('.timeline-item');
+
+            if (window.innerWidth < 768) {
+                track.style.height = '';
+                items.forEach(item => { item.style.top = ''; });
+                if (path) path.setAttribute('d', '');
+                return;
+            }
+
+            const OVERLAP_GAP = 48; // "a little below half" of the previous box
+            let top = 0;
+            items.forEach(item => {
+                item.style.top = `${top}px`;
+                top += item.offsetHeight / 2 + OVERLAP_GAP;
+            });
+
+            const lastItem = items[items.length - 1];
+            if (lastItem) {
+                track.style.height = `${parseFloat(lastItem.style.top) + lastItem.offsetHeight}px`;
+            }
+
+            if (!path) return;
+            const trackRect = track.getBoundingClientRect();
+            const points = Array.from(track.querySelectorAll('.timeline-dot')).map(dot => {
+                const r = dot.getBoundingClientRect();
+                return {
+                    x: r.left + r.width / 2 - trackRect.left,
+                    y: r.top + r.height / 2 - trackRect.top
+                };
+            });
+
+            if (points.length === 0) {
+                path.setAttribute('d', '');
+                return;
+            }
+
+            let d = `M ${points[0].x},${points[0].y}`;
+            for (let i = 1; i < points.length; i++) {
+                const prev = points[i - 1];
+                const curr = points[i];
+                const midY = (prev.y + curr.y) / 2;
+                d += ` C ${prev.x},${midY} ${curr.x},${midY} ${curr.x},${curr.y}`;
+            }
+            path.setAttribute('d', d);
+        }
+        layoutExperienceTimeline();
+        document.addEventListener('DOMContentLoaded', layoutExperienceTimeline);
+        window.addEventListener('load', layoutExperienceTimeline);
+        window.addEventListener('resize', layoutExperienceTimeline);
+
         // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
