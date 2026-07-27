@@ -158,6 +158,59 @@
             letter-spacing: 0.5px;
             text-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
         }
+
+        /* Scroll-reveal animations */
+        .reveal-up, .reveal-left, .reveal-right {
+            opacity: 0;
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up { transform: translateY(28px); }
+        .reveal-left { transform: translateX(-36px); }
+        .reveal-right { transform: translateX(36px); }
+        .reveal-visible { opacity: 1 !important; transform: translate(0, 0) !important; }
+
+        .reveal-up:nth-child(1), .reveal-left:nth-child(1), .reveal-right:nth-child(1) { transition-delay: 0s; }
+        .reveal-up:nth-child(2), .reveal-left:nth-child(2), .reveal-right:nth-child(2) { transition-delay: .08s; }
+        .reveal-up:nth-child(3), .reveal-left:nth-child(3), .reveal-right:nth-child(3) { transition-delay: .16s; }
+        .reveal-up:nth-child(4), .reveal-left:nth-child(4), .reveal-right:nth-child(4) { transition-delay: .24s; }
+        .reveal-up:nth-child(5), .reveal-left:nth-child(5), .reveal-right:nth-child(5) { transition-delay: .32s; }
+        .reveal-up:nth-child(6), .reveal-left:nth-child(6), .reveal-right:nth-child(6) { transition-delay: .4s; }
+        .reveal-up:nth-child(n+7) { transition-delay: .48s; }
+
+        /* Hero entrance */
+        @keyframes heroIn {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-in {
+            opacity: 0;
+            animation: heroIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .hero-in.d1 { animation-delay: .05s; }
+        .hero-in.d2 { animation-delay: .15s; }
+        .hero-in.d3 { animation-delay: .25s; }
+        .hero-in.d4 { animation-delay: .35s; }
+        .hero-in.d5 { animation-delay: .45s; }
+
+        /* Stats counter */
+        .stat-number { font-variant-numeric: tabular-nums; }
+
+        /* Experience timeline connector draw-in */
+        #timeline-connector {
+            transition: stroke-dashoffset 1.4s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-up, .reveal-left, .reveal-right, .hero-in {
+                transition: none !important;
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            #timeline-connector {
+                transition: none !important;
+            }
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -196,19 +249,19 @@
     <section id="home" class="pt-32 pb-20 gradient-bg text-white">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
-                <div class="inline-flex items-center gap-2 bg-white bg-opacity-20 text-white text-sm px-4 py-1.5 rounded-full mb-4 font-medium">
+                <div class="hero-in d1 inline-flex items-center gap-2 bg-white bg-opacity-20 text-white text-sm px-4 py-1.5 rounded-full mb-4 font-medium">
                     <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> Available for new opportunities
                 </div>
-                <h1 class="text-3xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-white font-bold">Munibullah Shah</span></h1>
-                <h2 class="text-xl md:text-3xl font-semibold mb-4">Flutter, Full-Stack & Data Engineer</h2>
-                <p class="text-base md:text-lg mb-8 text-indigo-100">5+ years delivering production-grade mobile apps, Node.js/Firebase backends, and Python data engineering pipelines — clean architecture, AI features, ETL workflows, and 5-star client reviews across 10+ shipped apps.</p>
-                <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-                    <a href="https://www.upwork.com/freelancers/~016c2530416635e76e?mp_source=share" target="_blank" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-indigo-50 transition duration-300">Hire Me on Upwork</a>
-                    <a href="#projects" class="border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition duration-300">View My Work</a>
+                <h1 class="hero-in d2 text-3xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-white font-bold">Munibullah Shah</span></h1>
+                <h2 class="hero-in d3 text-xl md:text-3xl font-semibold mb-4">Flutter, Full-Stack & Data Engineer</h2>
+                <p class="hero-in d4 text-base md:text-lg mb-8 text-indigo-100">5+ years delivering production-grade mobile apps, Node.js/Firebase backends, and Python data engineering pipelines — clean architecture, AI features, ETL workflows, and 5-star client reviews across 10+ shipped apps.</p>
+                <div class="hero-in d5 flex flex-wrap gap-3 justify-center md:justify-start">
+                    <a href="https://www.upwork.com/freelancers/~016c2530416635e76e?mp_source=share" target="_blank" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-indigo-50 hover:-translate-y-0.5 transition duration-300 inline-block">Hire Me on Upwork</a>
+                    <a href="#projects" class="border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 hover:-translate-y-0.5 transition duration-300 inline-block">View My Work</a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
-                <div class="w-64 h-64 md:w-80 md:h-80 bg-indigo-400 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                <div class="hero-in d3 w-64 h-64 md:w-80 md:h-80 bg-indigo-400 rounded-full overflow-hidden border-4 border-white shadow-xl">
                     <!-- Profile image -->
                     <img src="https://avatars.githubusercontent.com/u/49975985?v=4" alt="Munibullah Shah" class="w-full h-full object-cover">
                 </div>
@@ -217,7 +270,7 @@
     </section>
 
     <!-- Stats Bar -->
-    <section class="bg-white border-b border-gray-100 py-6">
+    <section id="stats" class="bg-white border-b border-gray-100 py-6">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div>
@@ -264,7 +317,7 @@
                 </div>
                 <div class="md:w-1/2 mt-8 md:mt-0">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="bg-gray-50 p-4 rounded-lg hover:-translate-y-1 hover:shadow-md transition duration-300">
                             <div class="flex items-center mb-2">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
                                     <i class="fas fa-mobile-alt text-indigo-600"></i>
@@ -273,7 +326,7 @@
                             </div>
                             <p class="text-gray-600 text-sm">Flutter specialist building pixel-perfect, performant apps for iOS & Android with clean architecture and robust state management.</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="bg-gray-50 p-4 rounded-lg hover:-translate-y-1 hover:shadow-md transition duration-300">
                             <div class="flex items-center mb-2">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
                                     <i class="fas fa-server text-indigo-600"></i>
@@ -282,7 +335,7 @@
                             </div>
                             <p class="text-gray-600 text-sm">Node.js & Python Cloud Functions, RESTful APIs via Dio, Firebase Auth/Firestore/Storage, and third-party service integrations.</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="bg-gray-50 p-4 rounded-lg hover:-translate-y-1 hover:shadow-md transition duration-300">
                             <div class="flex items-center mb-2">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
                                     <i class="fas fa-credit-card text-indigo-600"></i>
@@ -291,7 +344,7 @@
                             </div>
                             <p class="text-gray-600 text-sm">Stripe, RevenueCat IAP, and subscription flow implementation across iOS & Android with receipt validation and paywall screens.</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="bg-gray-50 p-4 rounded-lg hover:-translate-y-1 hover:shadow-md transition duration-300">
                             <div class="flex items-center mb-2">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
                                     <i class="fas fa-brain text-indigo-600"></i>
@@ -317,9 +370,9 @@
                 </svg>
 
                 <!-- Ambeego -->
-                <div class="timeline-item relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:right-0">
+                <div class="timeline-item reveal-right relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:right-0">
                     <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-0 md:-translate-x-1/2 md:top-6 z-10"></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-300">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
                             <h3 class="text-xl font-bold text-indigo-600">Full Stack Mobile Developer</h3>
                             <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">09/2025 - Present</span>
@@ -350,13 +403,13 @@
                 </div>
 
                 <!-- SuperHero Inc -->
-                <div class="timeline-item relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:left-0">
+                <div class="timeline-item reveal-left relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:left-0">
                     <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-auto md:right-0 md:translate-x-1/2 md:top-6 z-10"></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
-                            <div class="flex items-center gap-3">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-300">
+                        <div class="flex flex-col md:flex-row md:flex-wrap md:justify-between md:items-center gap-y-1 mb-1">
+                            <div class="flex items-center gap-3 flex-wrap">
                                 <h3 class="text-xl font-bold text-indigo-600">Flutter Developer</h3>
-                                <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium">Contract</span>
+                                <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium whitespace-nowrap">Contract</span>
                             </div>
                             <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full mt-2 md:mt-0">02/2024 - 07/2025</span>
                             </div>
@@ -383,13 +436,13 @@
                 </div>
 
                 <!-- Freelance -->
-                <div class="timeline-item relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:right-0">
+                <div class="timeline-item reveal-right relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:right-0">
                     <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-0 md:-translate-x-1/2 md:top-6 z-10"></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
-                            <div class="flex items-center gap-3">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-300">
+                        <div class="flex flex-col md:flex-row md:flex-wrap md:justify-between md:items-center gap-y-1 mb-1">
+                            <div class="flex items-center gap-3 flex-wrap">
                                 <h3 class="text-xl font-bold text-indigo-600">Freelance Flutter Developer</h3>
-                                <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Concurrent</span>
+                                <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium whitespace-nowrap">Concurrent</span>
                             </div>
                             <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full mt-2 md:mt-0">2021 - Present</span>
                             </div>
@@ -415,9 +468,9 @@
                 </div>
 
                 <!-- Hoboetech -->
-                <div class="timeline-item relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:left-0">
+                <div class="timeline-item reveal-left relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:left-0">
                     <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-auto md:right-0 md:translate-x-1/2 md:top-6 z-10"></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-300">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
                             <h3 class="text-xl font-bold text-indigo-600">Software Engineer — Android & Flutter</h3>
                             <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">09/2022 - 12/2023</span>
@@ -445,9 +498,9 @@
                 </div>
 
                 <!-- IOI Technologies -->
-                <div class="timeline-item relative pl-8 md:pl-0 mb-0 md:absolute md:w-[36%] md:right-0">
+                <div class="timeline-item reveal-right relative pl-8 md:pl-0 mb-0 md:absolute md:w-[36%] md:right-0">
                     <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-0 md:-translate-x-1/2 md:top-6 z-10"></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-300">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
                             <h3 class="text-xl font-bold text-indigo-600">Flutter Developer Intern</h3>
                             <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">02/2021 - 09/2021</span>
@@ -1335,32 +1388,32 @@
                 </a>
             </p>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15902036" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15902036" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <img src="https://cdn.qwiklabs.com/GyZSP0weY7EGS%2B1vqP6iIxX4Ha2N%2B3Eqtes%2FE4PfVyg%3D" alt="Set Up an App Dev Environment on Google Cloud badge" class="w-20 h-20 mx-auto mb-3 object-contain">
                     <h4 class="text-xs font-semibold text-gray-800 leading-snug">Set Up an App Dev Environment on Google Cloud</h4>
                     <p class="text-gray-500 text-xs mt-1">May 2025</p>
                 </a>
-                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15689672" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15689672" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <img src="https://cdn.qwiklabs.com/cjGVnoF%2FOdfhTVoDqKjUZhwt7oXFDcBmdki6VS4jkUk%3D" alt="Exploring Data Transformation with Google Cloud badge" class="w-20 h-20 mx-auto mb-3 object-contain">
                     <h4 class="text-xs font-semibold text-gray-800 leading-snug">Exploring Data Transformation with Google Cloud</h4>
                     <p class="text-gray-500 text-xs mt-1">May 2025</p>
                 </a>
-                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15688208" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15688208" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <img src="https://cdn.qwiklabs.com/Cy%2ByNrCB45x%2B45f0JOF02vxfu6ApO7NnVVCfQ7lEMto%3D" alt="Digital Transformation with Google Cloud badge" class="w-20 h-20 mx-auto mb-3 object-contain">
                     <h4 class="text-xs font-semibold text-gray-800 leading-snug">Digital Transformation with Google Cloud</h4>
                     <p class="text-gray-500 text-xs mt-1">May 2025</p>
                 </a>
-                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15262598" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/15262598" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <img src="https://cdn.qwiklabs.com/yRip3NtLCP%2B5Sp77zf9QQxwG0kUYUjSEtYEK4b2WAts%3D" alt="Google Cloud Fundamentals: Core Infrastructure badge" class="w-20 h-20 mx-auto mb-3 object-contain">
                     <h4 class="text-xs font-semibold text-gray-800 leading-snug">Google Cloud Fundamentals: Core Infrastructure</h4>
                     <p class="text-gray-500 text-xs mt-1">Apr 2025</p>
                 </a>
-                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/14829195" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/14829195" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <img src="https://cdn.qwiklabs.com/O%2BUe1xXu46e%2ByFUgcqTBv9siZuDhaelyqyBtltnwA4E%3D" alt="Implementing Cloud Load Balancing for Compute Engine badge" class="w-20 h-20 mx-auto mb-3 object-contain">
                     <h4 class="text-xs font-semibold text-gray-800 leading-snug">Implementing Cloud Load Balancing for Compute Engine</h4>
                     <p class="text-gray-500 text-xs mt-1">Apr 2025</p>
                 </a>
-                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/287265" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition">
+                <a href="https://www.skills.google/public_profiles/7d1557e9-5936-4f93-bd5e-6ab974d2d997/badges/287265" target="_blank" class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <img src="https://cdn.qwiklabs.com/jsSYBfmx0HU2%2FS0jWJkOq61EBGLdXopfwcjxqGcmdq8%3D" alt="Google Cloud Essentials badge" class="w-20 h-20 mx-auto mb-3 object-contain">
                     <h4 class="text-xs font-semibold text-gray-800 leading-snug">Google Cloud Essentials</h4>
                     <p class="text-gray-500 text-xs mt-1">Jul 2020</p>
@@ -1378,7 +1431,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Feedback 1 -->
-                <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white">
+                <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white hover:-translate-y-1 hover:shadow-lg transition duration-300">
                     <h3 class="text-xl font-bold mb-2 text-green-500">Looking for Flutter Experts in building Background Task</h3>
                     <div class="flex items-center mb-2">
                         <span class="text-yellow-400 mr-1"><i class="fas fa-star"></i></span>
@@ -1395,7 +1448,7 @@
                     </div>
                 </div>
                 <!-- Feedback 2 -->
-                <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white">
+                <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white hover:-translate-y-1 hover:shadow-lg transition duration-300">
                     <h3 class="text-xl font-bold mb-2 text-green-500">Flutter Dev needed to add functionality / Minor Fixes / Long term association</h3>
                     <div class="flex items-center mb-2">
                         <span class="text-yellow-400 mr-1"><i class="fas fa-star"></i></span>
@@ -1409,7 +1462,7 @@
                     <p class="mb-4">"One of the best and most thorough flutter devs on upwork. Trust your project to muneeb."</p>
                 </div>
                 <!-- Feedback 3 -->
-                <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white">
+                <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white hover:-translate-y-1 hover:shadow-lg transition duration-300">
                     <h3 class="text-xl font-bold mb-2 text-green-500">Experienced Flutter Developer for App Testing and Debugging</h3>
                     <div class="flex items-center mb-2">
                         <span class="text-yellow-400 mr-1"><i class="fas fa-star"></i></span>
@@ -1423,7 +1476,7 @@
                     <p class="mb-4">"Working with Munib was an excellent experience. He is dedicated, incredibly patient, and delivered the work with the highest quality. He handled everything professionally and showed great flexibility with revisions and additional requests. I highly recommend them for any future projects."</p>
                 </div>
                 <!-- Feedback 4 -->
-                <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white">
+                <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white hover:-translate-y-1 hover:shadow-lg transition duration-300">
                     <h3 class="text-xl font-bold mb-2 text-green-500">Schedule push notifications with Firebase and RevenueCat</h3>
                     <div class="flex items-center mb-2">
                         <span class="text-yellow-400 mr-1"><i class="fas fa-star"></i></span>
@@ -1437,7 +1490,7 @@
                     <p class="mb-4">"Quick & efficient job from Muneeb."</p>
                 </div>
                 <!-- Feedback 5 -->
-                <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white">
+                <div class="bg-gray-900 rounded-lg shadow-md p-6 text-white hover:-translate-y-1 hover:shadow-lg transition duration-300">
                     <h3 class="text-xl font-bold mb-2 text-green-500">Need flutter developer for small features to my app</h3>
                     <div class="flex items-center mb-2">
                         <span class="text-yellow-400 mr-1"><i class="fas fa-star"></i></span>
@@ -1461,7 +1514,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 <!-- Mobile -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <h3 class="text-base font-bold mb-4 text-indigo-600 flex items-center gap-2">
                         <i class="fas fa-mobile-alt"></i> Mobile Development
                     </h3>
@@ -1476,7 +1529,7 @@
                 </div>
 
                 <!-- State Management & Architecture -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <h3 class="text-base font-bold mb-4 text-indigo-600 flex items-center gap-2">
                         <i class="fas fa-layer-group"></i> Architecture & State
                     </h3>
@@ -1491,7 +1544,7 @@
                 </div>
 
                 <!-- Backend & APIs -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <h3 class="text-base font-bold mb-4 text-indigo-600 flex items-center gap-2">
                         <i class="fas fa-server"></i> Backend & APIs
                     </h3>
@@ -1505,7 +1558,7 @@
                 </div>
 
                 <!-- Firebase & Cloud -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <h3 class="text-base font-bold mb-4 text-indigo-600 flex items-center gap-2">
                         <i class="fas fa-cloud"></i> Firebase & Cloud
                     </h3>
@@ -1520,7 +1573,7 @@
                 </div>
 
                 <!-- Payments & Integrations -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <h3 class="text-base font-bold mb-4 text-indigo-600 flex items-center gap-2">
                         <i class="fas fa-credit-card"></i> Payments & Integrations
                     </h3>
@@ -1535,7 +1588,7 @@
                 </div>
 
                 <!-- Tooling -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <h3 class="text-base font-bold mb-4 text-indigo-600 flex items-center gap-2">
                         <i class="fas fa-tools"></i> Tooling & Workflow
                     </h3>
@@ -1550,7 +1603,7 @@
                 </div>
 
                 <!-- Data Engineering -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <h3 class="text-base font-bold mb-4 text-indigo-600 flex items-center gap-2">
                         <i class="fas fa-database"></i> Data Engineering
                     </h3>
@@ -1566,7 +1619,7 @@
             </div>
             
             <!-- Education -->
-            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+            <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:-translate-y-1 hover:shadow-md transition duration-300">
                 <h3 class="text-xl font-bold mb-6 text-indigo-600 flex items-center">
                     <i class="fas fa-graduation-cap mr-3"></i> Education
                 </h3>
@@ -1741,11 +1794,112 @@
                 d += ` C ${prev.x},${midY} ${curr.x},${midY} ${curr.x},${curr.y}`;
             }
             path.setAttribute('d', d);
+
+            // Prime the path for a stroke draw-in animation (see timeline
+            // draw-in IntersectionObserver below), preserving the drawn
+            // state across relayouts once it has already played.
+            const length = path.getTotalLength();
+            if (length) {
+                path.style.strokeDasharray = String(length);
+                path.style.strokeDashoffset = path.classList.contains('line-drawn') ? '0' : String(length);
+            }
         }
         layoutExperienceTimeline();
         document.addEventListener('DOMContentLoaded', layoutExperienceTimeline);
         window.addEventListener('load', layoutExperienceTimeline);
         window.addEventListener('resize', layoutExperienceTimeline);
+
+        // Draw the timeline connector in once the Experience section scrolls into view
+        (function initTimelineDrawIn() {
+            const experienceSection = document.getElementById('experience');
+            if (!experienceSection) return;
+            const drawObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const path = document.getElementById('timeline-connector');
+                        if (path) {
+                            path.classList.add('line-drawn');
+                            path.style.strokeDashoffset = '0';
+                        }
+                        drawObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            drawObserver.observe(experienceSection);
+        })();
+
+        // Scroll-reveal: fade/slide sections and cards in as they enter the viewport
+        (function initScrollReveal() {
+            document.querySelectorAll('section h2').forEach(h => h.classList.add('reveal-up'));
+
+            const aboutFlex = document.querySelector('#about > div > div.flex');
+            if (aboutFlex && aboutFlex.children.length >= 2) {
+                aboutFlex.children[0].classList.add('reveal-left');
+                aboutFlex.children[1].classList.add('reveal-right');
+            }
+            document.querySelectorAll('#about .grid > div').forEach(el => el.classList.add('reveal-up'));
+
+            document.querySelectorAll('#projects [data-categories]').forEach(el => el.classList.add('reveal-up'));
+            document.querySelectorAll('#certifications .grid > a').forEach(el => el.classList.add('reveal-up'));
+            document.querySelectorAll('#feedback .grid > div').forEach(el => el.classList.add('reveal-up'));
+            document.querySelectorAll('#skills .grid > div, #skills > div > .bg-gray-50').forEach(el => el.classList.add('reveal-up'));
+            document.querySelectorAll('#contact .max-w-2xl > div').forEach(el => el.classList.add('reveal-up'));
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+        })();
+
+        // Animate the stats bar numbers counting up when scrolled into view
+        (function initStatsCounters() {
+            const statsSection = document.getElementById('stats');
+            if (!statsSection) return;
+
+            function parseStat(text) {
+                const match = text.trim().match(/^([\d.]+)(.*)$/);
+                if (!match) return null;
+                const decimals = (match[1].split('.')[1] || '').length;
+                return { target: parseFloat(match[1]), suffix: match[2], decimals };
+            }
+
+            const numberEls = Array.from(statsSection.querySelectorAll('.text-3xl.font-bold.text-indigo-600'));
+            const counters = numberEls.map(el => {
+                const parsed = parseStat(el.textContent);
+                if (!parsed) return null;
+                el.classList.add('stat-number');
+                el.textContent = '0' + parsed.suffix;
+                return { el, ...parsed };
+            }).filter(Boolean);
+
+            function animateCount({ el, target, suffix, decimals }) {
+                const duration = 1200;
+                const start = performance.now();
+                function tick(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = (target * eased).toFixed(decimals) + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+            }
+
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        counters.forEach(animateCount);
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            statsObserver.observe(statsSection);
+        })();
 
         // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
