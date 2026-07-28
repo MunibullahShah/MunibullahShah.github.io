@@ -34,16 +34,14 @@
             transition: width 1s ease-in-out;
         }
         
-        @media (max-width: 767px) {
-            .timeline-item:not(:last-child)::after {
-                content: '';
-                position: absolute;
-                left: 7px;
-                top: 24px;
-                height: calc(100% - 24px);
-                width: 2px;
-                background-color: #cbd5e1;
-            }
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            height: calc(100% - 24px);
+            width: 2px;
+            background-color: #cbd5e1;
         }
         
         @media (hover: hover) {
@@ -195,9 +193,28 @@
         /* Stats counter */
         .stat-number { font-variant-numeric: tabular-nums; }
 
-        /* Experience timeline connector draw-in */
-        #timeline-connector {
-            transition: stroke-dashoffset 1.4s cubic-bezier(0.65, 0, 0.35, 1);
+        /* Shared modal (Experience "show more", Baby Resume gallery) */
+        .modal-backdrop, .modal-panel {
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal-backdrop { opacity: 0; }
+        .modal-panel { opacity: 0; transform: scale(0.95) translateY(12px); }
+        .modal-backdrop.modal-visible { opacity: 1; }
+        .modal-panel.modal-visible { opacity: 1; transform: scale(1) translateY(0); }
+
+        .modal-reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal-reveal.modal-reveal-visible { opacity: 1; transform: translateY(0); }
+        .modal-reveal:nth-child(1) { transition-delay: .08s; }
+        .modal-reveal:nth-child(2) { transition-delay: .18s; }
+        .modal-reveal:nth-child(3) { transition-delay: .28s; }
+
+        /* Baby Resume screenshot stack */
+        .screenshot-stack img {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -207,8 +224,10 @@
                 opacity: 1 !important;
                 transform: none !important;
             }
-            #timeline-connector {
+            .modal-backdrop, .modal-panel, .modal-reveal, .screenshot-stack img {
                 transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
             }
         }
     </style>
@@ -363,15 +382,11 @@
     <section id="experience" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Work Experience</h2>
-            
-            <div id="experience-timeline" class="w-full relative">
-                <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none" style="z-index:0;">
-                    <path id="timeline-connector" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                </svg>
 
+            <div id="experience-timeline" class="max-w-3xl mx-auto">
                 <!-- Ambeego -->
-                <div class="timeline-item reveal-right relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:right-0">
-                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-0 md:-translate-x-1/2 md:top-6 z-10"></div>
+                <div class="timeline-item reveal-up relative pl-8 pb-10">
+                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 z-10"></div>
                     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-300">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
                             <h3 class="text-xl font-bold text-indigo-600">Full Stack Mobile Developer</h3>
@@ -403,8 +418,8 @@
                 </div>
 
                 <!-- SuperHero Inc -->
-                <div class="timeline-item reveal-left relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:left-0">
-                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-auto md:right-0 md:translate-x-1/2 md:top-6 z-10"></div>
+                <div class="timeline-item reveal-up relative pl-8">
+                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 z-10"></div>
                     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-300">
                         <div class="flex flex-col md:flex-row md:flex-wrap md:justify-between md:items-center gap-y-1 mb-1">
                             <div class="flex items-center gap-3 flex-wrap">
@@ -412,14 +427,14 @@
                                 <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium whitespace-nowrap">Contract</span>
                             </div>
                             <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full mt-2 md:mt-0">02/2024 - 07/2025</span>
-                            </div>
-                            <h4 class="text-lg font-semibold mb-1">SuperHero Inc. | Islamabad</h4>
-                            <p class="text-gray-500 text-sm mb-3">eSIM provider enabling international travelers to buy and activate data plans in
-                                150+ countries.</p>
-                            <ul class="list-disc pl-5 space-y-2 text-gray-700 mb-4">
-                                <li>Led Flutter development of the SuperHero eSIM app, shipping to App Store and Google Play</li>
-                                <li>Integrated Stripe end-to-end — checkout UI, payment flows, and webhook handling — for secure cross-border
-                                    transactions</li>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-1">SuperHero Inc. | Islamabad</h4>
+                        <p class="text-gray-500 text-sm mb-3">eSIM provider enabling international travelers to buy and activate data plans in
+                            150+ countries.</p>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700 mb-4">
+                            <li>Led Flutter development of the SuperHero eSIM app, shipping to App Store and Google Play</li>
+                            <li>Integrated Stripe end-to-end — checkout UI, payment flows, and webhook handling — for secure cross-border
+                                transactions</li>
                             <li>Built and maintained RESTful API integrations for eSIM provisioning and data plan management</li>
                             <li>Optimized rendering performance and UI responsiveness across device sizes</li>
                             <li>Implemented real-time state synchronization using BLOC across concurrent data updates</li>
@@ -434,17 +449,38 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Freelance -->
-                <div class="timeline-item reveal-right relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:right-0">
-                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-0 md:-translate-x-1/2 md:top-6 z-10"></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-300">
-                        <div class="flex flex-col md:flex-row md:flex-wrap md:justify-between md:items-center gap-y-1 mb-1">
-                            <div class="flex items-center gap-3 flex-wrap">
-                                <h3 class="text-xl font-bold text-indigo-600">Freelance Flutter Developer</h3>
-                                <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium whitespace-nowrap">Concurrent</span>
-                            </div>
-                            <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full mt-2 md:mt-0">2021 - Present</span>
+            <div class="text-center mt-10 reveal-up">
+                <button id="show-more-experience" type="button" class="inline-flex items-center gap-2 border-2 border-indigo-600 text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-indigo-600 hover:text-white hover:-translate-y-0.5 transition duration-300">
+                    Show More Experience <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience "Show More" Modal -->
+    <div id="experience-modal" class="hidden fixed inset-0 z-[100]">
+        <div id="experience-modal-backdrop" class="modal-backdrop absolute inset-0 bg-gray-900/60 backdrop-blur-sm"></div>
+        <div class="relative min-h-full flex items-start md:items-center justify-center p-4 py-10">
+            <div id="experience-modal-panel" class="modal-panel relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto">
+                <div class="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
+                    <h3 class="text-xl font-bold text-gray-800">More Experience</h3>
+                    <button id="close-experience-modal" type="button" aria-label="Close" class="text-gray-400 hover:text-gray-700 transition w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <!-- Freelance -->
+                    <div class="timeline-item modal-reveal relative pl-8 pb-10">
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 z-10"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                            <div class="flex flex-col md:flex-row md:flex-wrap md:justify-between md:items-center gap-y-1 mb-1">
+                                <div class="flex items-center gap-3 flex-wrap">
+                                    <h3 class="text-xl font-bold text-indigo-600">Freelance Flutter Developer</h3>
+                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium whitespace-nowrap">Concurrent</span>
+                                </div>
+                                <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full mt-2 md:mt-0">2021 - Present</span>
                             </div>
                             <h4 class="text-lg font-semibold mb-1">Upwork / Direct Clients | Remote</h4>
                             <p class="text-gray-500 text-sm mb-3">Ongoing freelance work running in parallel with employment — international clients
@@ -455,75 +491,137 @@
                                     ordering and FCM push notifications</li>
                                 <li>Delivered Flutter feature work, bug fixes, and full app builds independently from spec to release</li>
                                 <li>Translated business requirements directly into technical specifications for international clients</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">Flutter</span>
-                            <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">Firebase</span>
-                            <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">Node.js</span>
-                            <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">Python</span>
-                            <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">OpenAI GPT</span>
-                            <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">RevenueCat</span>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">Flutter</span>
+                                <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">Firebase</span>
+                                <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">Node.js</span>
+                                <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">Python</span>
+                                <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">OpenAI GPT</span>
+                                <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full">RevenueCat</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Hoboetech -->
-                <div class="timeline-item reveal-left relative pl-8 md:pl-0 mb-12 md:mb-0 md:absolute md:w-[36%] md:left-0">
-                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-auto md:right-0 md:translate-x-1/2 md:top-6 z-10"></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-300">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
-                            <h3 class="text-xl font-bold text-indigo-600">Software Engineer — Android & Flutter</h3>
-                            <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">09/2022 - 12/2023</span>
-                        </div>
-                        <h4 class="text-lg font-semibold mb-1">Hoboetech | Lahore</h4>
-                        <p class="text-gray-500 text-sm mb-3">Mobile software house building location-aware and emergency response apps for the
-                            Pakistani market.</p>
-                        <ul class="list-disc pl-5 space-y-2 text-gray-700 mb-4">
-                            <li>Shipped 5+ mobile apps from requirements to App Store / Play Store, including the Rescue emergency response app</li>
-                            <li>Built advanced mapping features — polylines, geofencing, real-time tracking — using Google Maps and Mapbox SDKs
-                            </li>
-                            <li>Architected Firebase integrations: Auth, Realtime Database, Firestore, and Cloud Functions</li>
-                            <li>Implemented background services and on-device ML features using Google ML Kit</li>
-                            <li>Independently owned 3 apps end-to-end — sole developer from architecture through release</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">Flutter</span>
-                            <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">Android (Java)</span>
-                            <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">Firebase</span>
-                            <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">Google Maps</span>
-                            <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">Mapbox</span>
-                            <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">ML Kit</span>
+                    <!-- Hoboetech -->
+                    <div class="timeline-item modal-reveal relative pl-8 pb-10">
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 z-10"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
+                                <h3 class="text-xl font-bold text-indigo-600">Software Engineer — Android & Flutter</h3>
+                                <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">09/2022 - 12/2023</span>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-1">Hoboetech | Lahore</h4>
+                            <p class="text-gray-500 text-sm mb-3">Mobile software house building location-aware and emergency response apps for the
+                                Pakistani market.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700 mb-4">
+                                <li>Shipped 5+ mobile apps from requirements to App Store / Play Store, including the Rescue emergency response app</li>
+                                <li>Built advanced mapping features — polylines, geofencing, real-time tracking — using Google Maps and Mapbox SDKs
+                                </li>
+                                <li>Architected Firebase integrations: Auth, Realtime Database, Firestore, and Cloud Functions</li>
+                                <li>Implemented background services and on-device ML features using Google ML Kit</li>
+                                <li>Independently owned 3 apps end-to-end — sole developer from architecture through release</li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">Flutter</span>
+                                <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">Android (Java)</span>
+                                <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">Firebase</span>
+                                <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">Google Maps</span>
+                                <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">Mapbox</span>
+                                <span class="bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full">ML Kit</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- IOI Technologies -->
-                <div class="timeline-item reveal-right relative pl-8 md:pl-0 mb-0 md:absolute md:w-[36%] md:right-0">
-                    <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 md:left-0 md:-translate-x-1/2 md:top-6 z-10"></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-300">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
-                            <h3 class="text-xl font-bold text-indigo-600">Flutter Developer Intern</h3>
-                            <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">02/2021 - 09/2021</span>
-                        </div>
-                        <h4 class="text-lg font-semibold mb-1">IOI Technologies | Lahore</h4>
-                        <p class="text-gray-500 text-sm mb-3">Software company building real estate and directory apps — product owners of the Bahria Plus platform.</p>
-                        <ul class="list-disc pl-5 space-y-2 text-gray-700 mb-4">
-                            <li>Built and delivered UI screens for production mobile applications used by real end-users</li>
-                            <li>Applied GetX and Provider state management patterns in a production codebase</li>
-                            <li>Resolved bugs and performance issues, contributing to improved app stability</li>
-                            <li>Participated in sprint planning and code reviews within an agile team</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-orange-50 text-orange-700 text-xs px-2.5 py-1 rounded-full">Flutter</span>
-                            <span class="bg-orange-50 text-orange-700 text-xs px-2.5 py-1 rounded-full">GetX</span>
-                            <span class="bg-orange-50 text-orange-700 text-xs px-2.5 py-1 rounded-full">Provider</span>
-                            <span class="bg-orange-50 text-orange-700 text-xs px-2.5 py-1 rounded-full">Dart</span>
+                    <!-- IOI Technologies -->
+                    <div class="timeline-item modal-reveal relative pl-8">
+                        <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-indigo-100 z-10"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
+                                <h3 class="text-xl font-bold text-indigo-600">Flutter Developer Intern</h3>
+                                <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">02/2021 - 09/2021</span>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-1">IOI Technologies | Lahore</h4>
+                            <p class="text-gray-500 text-sm mb-3">Software company building real estate and directory apps — product owners of the Bahria Plus platform.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700 mb-4">
+                                <li>Built and delivered UI screens for production mobile applications used by real end-users</li>
+                                <li>Applied GetX and Provider state management patterns in a production codebase</li>
+                                <li>Resolved bugs and performance issues, contributing to improved app stability</li>
+                                <li>Participated in sprint planning and code reviews within an agile team</li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-orange-50 text-orange-700 text-xs px-2.5 py-1 rounded-full">Flutter</span>
+                                <span class="bg-orange-50 text-orange-700 text-xs px-2.5 py-1 rounded-full">GetX</span>
+                                <span class="bg-orange-50 text-orange-700 text-xs px-2.5 py-1 rounded-full">Provider</span>
+                                <span class="bg-orange-50 text-orange-700 text-xs px-2.5 py-1 rounded-full">Dart</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Baby Resume App Screenshot Gallery Modal -->
+    <div id="gallery-modal" class="hidden fixed inset-0 z-[100]">
+        <div id="gallery-modal-backdrop" class="modal-backdrop absolute inset-0 bg-gray-900/70 backdrop-blur-sm"></div>
+        <div class="relative min-h-full flex items-start md:items-center justify-center p-4 py-10">
+            <div id="gallery-modal-panel" class="modal-panel relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[85vh] overflow-y-auto">
+                <div class="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
+                    <h3 class="text-xl font-bold text-gray-800">Baby Resume App — Screenshots</h3>
+                    <button id="close-gallery-modal" type="button" aria-label="Close" class="text-gray-400 hover:text-gray-700 transition w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    <button type="button" class="gallery-thumb group relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-full="baby-resume/welcome_page.png">
+                        <img src="baby-resume/welcome_page.png" alt="Welcome screen" class="w-full h-64 object-contain bg-gray-50">
+                    </button>
+                    <button type="button" class="gallery-thumb group relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-full="baby-resume/category_selection.png">
+                        <img src="baby-resume/category_selection.png" alt="Category selection screen" class="w-full h-64 object-contain bg-gray-50">
+                    </button>
+                    <button type="button" class="gallery-thumb group relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-full="baby-resume/resume_creation_page.png">
+                        <img src="baby-resume/resume_creation_page.png" alt="Resume creation screen" class="w-full h-64 object-contain bg-gray-50">
+                    </button>
+                    <button type="button" class="gallery-thumb group relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-full="baby-resume/resume_page.png">
+                        <img src="baby-resume/resume_page.png" alt="Resume screen" class="w-full h-64 object-contain bg-gray-50">
+                    </button>
+                    <button type="button" class="gallery-thumb group relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-full="baby-resume/article_home.png">
+                        <img src="baby-resume/article_home.png" alt="Article home screen" class="w-full h-64 object-contain bg-gray-50">
+                    </button>
+                    <button type="button" class="gallery-thumb group relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-full="baby-resume/events_home_page.png">
+                        <img src="baby-resume/events_home_page.png" alt="Events home screen" class="w-full h-64 object-contain bg-gray-50">
+                    </button>
+                    <button type="button" class="gallery-thumb group relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-full="baby-resume/birthday_page.png">
+                        <img src="baby-resume/birthday_page.png" alt="Birthday screen" class="w-full h-64 object-contain bg-gray-50">
+                    </button>
+                    <button type="button" class="gallery-thumb group relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-full="baby-resume/history_page.png">
+                        <img src="baby-resume/history_page.png" alt="History screen" class="w-full h-64 object-contain bg-gray-50">
+                    </button>
+                    <button type="button" class="gallery-thumb group relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-full="baby-resume/recap_page.png">
+                        <img src="baby-resume/recap_page.png" alt="Recap screen" class="w-full h-64 object-contain bg-gray-50">
+                    </button>
+                    <button type="button" class="gallery-thumb group relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-full="baby-resume/3477.png">
+                        <img src="baby-resume/3477.png" alt="App screen" class="w-full h-64 object-contain bg-gray-50">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lightbox for a single enlarged screenshot -->
+        <div id="gallery-lightbox" class="hidden absolute inset-0 z-20 flex items-center justify-center p-4 bg-gray-900/85">
+            <button id="gallery-lightbox-close" type="button" aria-label="Close image" class="absolute top-4 right-4 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <button id="gallery-prev" type="button" aria-label="Previous image" class="absolute left-2 md:left-6 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition">
+                <i class="fas fa-chevron-left text-xl"></i>
+            </button>
+            <img id="gallery-lightbox-img" src="" alt="Baby Resume App screenshot" class="max-h-[80vh] max-w-full rounded-xl shadow-2xl">
+            <button id="gallery-next" type="button" aria-label="Next image" class="absolute right-2 md:right-6 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition">
+                <i class="fas fa-chevron-right text-xl"></i>
+            </button>
+        </div>
+    </div>
 
     <!-- Projects Section -->
     <section id="projects" class="py-20 bg-white">
@@ -574,7 +672,11 @@
                             </div>
                         </div>
                         <div class="flex-shrink-0 hidden md:block">
-                            <img src="yes/api/placeholder/mrhr.png" alt="Mr. HR Mascot" class="w-28 h-28 object-contain drop-shadow-lg">
+                            <button type="button" class="gallery-trigger screenshot-stack group relative w-32 h-32 flex items-center justify-center cursor-pointer" aria-haspopup="dialog" aria-label="View Baby Resume App screenshots">
+                                <img src="baby-resume/category_selection.png" alt="Baby Resume App screenshot" class="absolute w-14 h-28 object-cover object-top rounded-lg border-[3px] border-white shadow-md -translate-x-4 -rotate-6 group-hover:-translate-x-6 group-hover:-rotate-[10deg] group-hover:scale-105 z-10">
+                                <img src="baby-resume/resume_page.png" alt="Baby Resume App screenshot" class="absolute w-14 h-28 object-cover object-top rounded-lg border-[3px] border-white shadow-lg group-hover:scale-105 z-20">
+                                <img src="baby-resume/welcome_page.png" alt="Baby Resume App screenshot" class="absolute w-14 h-28 object-cover object-top rounded-lg border-[3px] border-white shadow-md translate-x-4 rotate-6 group-hover:translate-x-6 group-hover:rotate-[10deg] group-hover:scale-105 z-10">
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -583,15 +685,22 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Mobile App Card -->
                     <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300 border border-gray-100">
-                        <div class="h-40 bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center relative overflow-hidden">
-                            <img src="yes/api/placeholder/mrhr.png" alt="Baby Resume App" class="h-full w-full object-cover object-center">
-                            <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
-                            <div class="absolute bottom-2 left-3">
+                        <button type="button" class="gallery-trigger screenshot-stack group relative h-44 w-full bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center overflow-hidden cursor-pointer" aria-haspopup="dialog" aria-label="View Baby Resume App screenshots">
+                            <img src="baby-resume/category_selection.png" alt="Baby Resume App screenshot" class="absolute w-20 h-36 object-cover object-top rounded-lg border-4 border-white shadow-md -translate-x-6 -rotate-6 group-hover:-translate-x-9 group-hover:-rotate-[10deg] group-hover:scale-105 z-10">
+                            <img src="baby-resume/resume_page.png" alt="Baby Resume App screenshot" class="absolute w-20 h-36 object-cover object-top rounded-lg border-4 border-white shadow-lg group-hover:scale-105 z-20">
+                            <img src="baby-resume/welcome_page.png" alt="Baby Resume App screenshot" class="absolute w-20 h-36 object-cover object-top rounded-lg border-4 border-white shadow-md translate-x-6 rotate-6 group-hover:translate-x-9 group-hover:rotate-[10deg] group-hover:scale-105 z-10">
+                            <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/10 transition-colors duration-300 z-30"></div>
+                            <div class="absolute bottom-2 left-3 z-40">
                                 <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full font-medium">
                                     <i class="fas fa-mobile-alt mr-1"></i>Flutter App
                                 </span>
                             </div>
-                        </div>
+                            <div class="absolute bottom-2 right-3 z-40">
+                                <span class="bg-white/90 text-gray-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm">
+                                    <i class="fas fa-images mr-1 text-indigo-600"></i>View Screens
+                                </span>
+                            </div>
+                        </button>
                         <div class="p-5">
                             <h4 class="text-lg font-bold text-gray-800 mb-1">Mobile App</h4>
                             <p class="text-gray-500 text-sm mb-3">iOS & Android client built with Flutter using Clean Architecture and BLOC/Cubit state management.</p>
@@ -1743,89 +1852,117 @@
     </footer>
 
     <script>
-        // Stagger the experience timeline boxes (each box starts a little below
-        // the vertical half of the previous box) and draw a smooth curved line
-        // connecting the dots.
-        function layoutExperienceTimeline() {
-            const track = document.getElementById('experience-timeline');
-            const path = document.getElementById('timeline-connector');
-            if (!track) return;
-            const items = track.querySelectorAll('.timeline-item');
+        // Experience "Show More" modal: reveals the remaining roles with a
+        // fade/scale-in panel and a staggered slide-up for each entry.
+        (function initExperienceModal() {
+            const openBtn = document.getElementById('show-more-experience');
+            const modal = document.getElementById('experience-modal');
+            const backdrop = document.getElementById('experience-modal-backdrop');
+            const panel = document.getElementById('experience-modal-panel');
+            const closeBtn = document.getElementById('close-experience-modal');
+            if (!openBtn || !modal || !backdrop || !panel || !closeBtn) return;
 
-            if (window.innerWidth < 768) {
-                track.style.height = '';
-                items.forEach(item => { item.style.top = ''; });
-                if (path) path.setAttribute('d', '');
-                return;
-            }
+            const revealItems = modal.querySelectorAll('.modal-reveal');
+            let lastFocused = null;
 
-            const OVERLAP_GAP = 48; // "a little below half" of the previous box
-            let top = 0;
-            items.forEach(item => {
-                item.style.top = `${top}px`;
-                top += item.offsetHeight / 2 + OVERLAP_GAP;
-            });
-
-            const lastItem = items[items.length - 1];
-            if (lastItem) {
-                track.style.height = `${parseFloat(lastItem.style.top) + lastItem.offsetHeight}px`;
-            }
-
-            if (!path) return;
-            const trackRect = track.getBoundingClientRect();
-            const points = Array.from(track.querySelectorAll('.timeline-dot')).map(dot => {
-                const r = dot.getBoundingClientRect();
-                return {
-                    x: r.left + r.width / 2 - trackRect.left,
-                    y: r.top + r.height / 2 - trackRect.top
-                };
-            });
-
-            if (points.length === 0) {
-                path.setAttribute('d', '');
-                return;
-            }
-
-            let d = `M ${points[0].x},${points[0].y}`;
-            for (let i = 1; i < points.length; i++) {
-                const prev = points[i - 1];
-                const curr = points[i];
-                const midY = (prev.y + curr.y) / 2;
-                d += ` C ${prev.x},${midY} ${curr.x},${midY} ${curr.x},${curr.y}`;
-            }
-            path.setAttribute('d', d);
-
-            // Prime the path for a stroke draw-in animation (see timeline
-            // draw-in IntersectionObserver below), preserving the drawn
-            // state across relayouts once it has already played.
-            const length = path.getTotalLength();
-            if (length) {
-                path.style.strokeDasharray = String(length);
-                path.style.strokeDashoffset = path.classList.contains('line-drawn') ? '0' : String(length);
-            }
-        }
-        layoutExperienceTimeline();
-        document.addEventListener('DOMContentLoaded', layoutExperienceTimeline);
-        window.addEventListener('load', layoutExperienceTimeline);
-        window.addEventListener('resize', layoutExperienceTimeline);
-
-        // Draw the timeline connector in once the Experience section scrolls into view
-        (function initTimelineDrawIn() {
-            const experienceSection = document.getElementById('experience');
-            if (!experienceSection) return;
-            const drawObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const path = document.getElementById('timeline-connector');
-                        if (path) {
-                            path.classList.add('line-drawn');
-                            path.style.strokeDashoffset = '0';
-                        }
-                        drawObserver.unobserve(entry.target);
-                    }
+            function openModal() {
+                lastFocused = document.activeElement;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                requestAnimationFrame(() => {
+                    backdrop.classList.add('modal-visible');
+                    panel.classList.add('modal-visible');
+                    revealItems.forEach(el => el.classList.add('modal-reveal-visible'));
                 });
-            }, { threshold: 0.15 });
-            drawObserver.observe(experienceSection);
+                closeBtn.focus();
+            }
+
+            function closeModal() {
+                backdrop.classList.remove('modal-visible');
+                panel.classList.remove('modal-visible');
+                revealItems.forEach(el => el.classList.remove('modal-reveal-visible'));
+                document.body.style.overflow = '';
+                window.setTimeout(() => modal.classList.add('hidden'), 300);
+                if (lastFocused) lastFocused.focus();
+            }
+
+            openBtn.addEventListener('click', openModal);
+            closeBtn.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+            });
+        })();
+
+        // Baby Resume App screenshot stack: opens a gallery modal, with a
+        // click-to-enlarge lightbox for browsing individual screenshots.
+        (function initBabyResumeGallery() {
+            const triggers = Array.from(document.querySelectorAll('.gallery-trigger'));
+            const modal = document.getElementById('gallery-modal');
+            const backdrop = document.getElementById('gallery-modal-backdrop');
+            const panel = document.getElementById('gallery-modal-panel');
+            const closeBtn = document.getElementById('close-gallery-modal');
+            const lightbox = document.getElementById('gallery-lightbox');
+            const lightboxImg = document.getElementById('gallery-lightbox-img');
+            const lightboxClose = document.getElementById('gallery-lightbox-close');
+            const prevBtn = document.getElementById('gallery-prev');
+            const nextBtn = document.getElementById('gallery-next');
+            if (!triggers.length || !modal || !backdrop || !panel || !closeBtn || !lightbox || !lightboxImg) return;
+
+            const thumbs = Array.from(modal.querySelectorAll('.gallery-thumb'));
+            const images = thumbs.map(t => t.dataset.full);
+            let currentIndex = 0;
+            let lastFocused = null;
+
+            function openModal() {
+                lastFocused = document.activeElement;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                requestAnimationFrame(() => {
+                    backdrop.classList.add('modal-visible');
+                    panel.classList.add('modal-visible');
+                });
+                closeBtn.focus();
+            }
+
+            function closeModal() {
+                closeLightbox();
+                backdrop.classList.remove('modal-visible');
+                panel.classList.remove('modal-visible');
+                document.body.style.overflow = '';
+                window.setTimeout(() => modal.classList.add('hidden'), 300);
+                if (lastFocused) lastFocused.focus();
+            }
+
+            function showLightbox(index) {
+                currentIndex = (index + images.length) % images.length;
+                lightboxImg.src = images[currentIndex];
+                lightbox.classList.remove('hidden');
+            }
+
+            function closeLightbox() {
+                lightbox.classList.add('hidden');
+            }
+
+            triggers.forEach(trigger => trigger.addEventListener('click', openModal));
+            closeBtn.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+
+            thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => showLightbox(i)));
+            lightboxClose.addEventListener('click', closeLightbox);
+            prevBtn.addEventListener('click', () => showLightbox(currentIndex - 1));
+            nextBtn.addEventListener('click', () => showLightbox(currentIndex + 1));
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (!lightbox.classList.contains('hidden')) { closeLightbox(); return; }
+                    if (!modal.classList.contains('hidden')) closeModal();
+                    return;
+                }
+                if (lightbox.classList.contains('hidden')) return;
+                if (e.key === 'ArrowRight') showLightbox(currentIndex + 1);
+                if (e.key === 'ArrowLeft') showLightbox(currentIndex - 1);
+            });
         })();
 
         // Scroll-reveal: fade/slide sections and cards in as they enter the viewport
