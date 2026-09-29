@@ -400,7 +400,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:40px;back
 .hx-node:not(:last-child)::after{content:'';position:absolute;top:26px;right:-11px;width:11px;height:1px;background:var(--line-2)}
 .hx-node .hx-dot{position:absolute;top:22px;right:-12px;width:9px;height:9px;border-radius:50%;background:var(--cyan);
   box-shadow:0 0 12px var(--cyan);opacity:0;pointer-events:none}
-.hx-node.go .hx-dot{animation:hxgo .55s ease-in forwards}
+.hx-node.go .hx-dot{animation:hxgo .4s ease-in forwards}
 @keyframes hxgo{0%{opacity:1;transform:translateX(-10px)}100%{opacity:0;transform:translateX(14px)}}
 .hx-node.on{opacity:1;border-color:rgba(79,209,224,.55);background:rgba(79,209,224,.07);box-shadow:0 0 26px rgba(79,209,224,.12)}
 .hx-node.on .hx-ic{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(79,209,224,.5)}
@@ -1444,7 +1444,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:40px;back
           { n: 1, log: 'refused at the tool layer, nothing shared', cls: 'bad', res: 'REFUSED', state: 'fail', stop: true } ] }
       ]
     };
-    var STEP = 1300, PAUSE = 2600;
+    var STEP = 850, PAUSE = 1800;
 
     function run(root){
       var kind = root.getAttribute('data-kind'), list = SC[kind], k = 0;
@@ -1486,7 +1486,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:40px;back
           line(s.log, s.cls);
           timer = setTimeout(step, STEP);
         }
-        timer = setTimeout(step, 500);
+        timer = setTimeout(step, 300);
       }
       if ('IntersectionObserver' in window){
         new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }, { threshold: .25 }).observe(root);
