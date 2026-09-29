@@ -375,6 +375,63 @@ footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:40px;back
   .feat .fhead,.pillar,.shots,.cinfo,.cform{padding-left:20px;padding-right:20px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* ---------- how it runs (animated flows) ---------- */
+.hx-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.hx{padding:24px 24px 20px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.hx-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.hx-tag{font-family:var(--mono);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--cyan);margin-bottom:6px}
+.hx h3{font-family:var(--display);font-size:19px;font-weight:600;letter-spacing:-.01em}
+.hx-tools{display:flex;gap:6px;flex-wrap:wrap}
+.hx-event{display:flex;gap:10px;align-items:center;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025);font-size:14px;min-height:44px}
+.hx-ev-k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);flex:none}
+.hx-ev-v{color:var(--txt);transition:opacity .3s}
+.hx-track{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;position:relative;padding:0;margin:0}
+.hx-node{position:relative;border:1px solid var(--line);border-radius:14px;padding:14px 12px 12px;background:rgba(255,255,255,.02);
+  display:flex;flex-direction:column;gap:5px;transition:border-color .35s,background .35s,box-shadow .35s,opacity .35s;opacity:.55}
+.hx-node b{font-family:var(--display);font-size:14.5px;font-weight:600}
+.hx-node em{font-style:normal;font-size:12.5px;line-height:1.45;color:var(--muted)}
+.hx-ic{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:11px;
+  border:1px solid var(--line-2);color:var(--muted);margin-bottom:4px;transition:.35s}
+.hx-node.dec .hx-ic{border-radius:6px;transform:rotate(45deg)}
+.hx-node.dec .hx-ic{font-size:0}
+.hx-node.dec .hx-ic::after{content:'?';font-size:11px;transform:rotate(-45deg)}
+/* connector with travelling dot */
+.hx-node:not(:last-child)::after{content:'';position:absolute;top:26px;right:-11px;width:11px;height:1px;background:var(--line-2)}
+.hx-node .hx-dot{position:absolute;top:22px;right:-12px;width:9px;height:9px;border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 12px var(--cyan);opacity:0;pointer-events:none}
+.hx-node.go .hx-dot{animation:hxgo .55s ease-in forwards}
+@keyframes hxgo{0%{opacity:1;transform:translateX(-10px)}100%{opacity:0;transform:translateX(14px)}}
+.hx-node.on{opacity:1;border-color:rgba(79,209,224,.55);background:rgba(79,209,224,.07);box-shadow:0 0 26px rgba(79,209,224,.12)}
+.hx-node.on .hx-ic{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(79,209,224,.5)}
+.hx-node.done{opacity:1;border-color:rgba(74,222,128,.35)}
+.hx-node.done .hx-ic{border-color:var(--green);color:var(--green)}
+.hx-node.fail{opacity:1;border-color:rgba(248,113,113,.6);background:rgba(248,113,113,.07)}
+.hx-node.fail .hx-ic{border-color:#f87171;color:#f87171}
+.hx-node.skip{opacity:.3}
+.hx-res{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;margin-top:4px;min-height:14px;color:var(--green)}
+.hx-node.fail .hx-res{color:#f87171}
+.hx-log{font-family:var(--mono);font-size:11.5px;line-height:1.75;color:var(--muted);background:rgba(0,0,0,.28);border:1px solid var(--line);
+  border-radius:12px;padding:12px 14px;min-height:112px;overflow:hidden}
+.hx-log div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;animation:hxin .3s ease-out}
+@media(max-width:640px){.hx-log div{white-space:normal}}
+.hx-log div s{text-decoration:none;color:var(--dim);margin-right:8px}
+.hx-log .ok{color:var(--green)}.hx-log .bad{color:#f87171}.hx-log .hi{color:var(--cyan)}
+@keyframes hxin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.hx-foot{font-size:12.5px;color:var(--dim)}
+@media(max-width:1100px){.hx-grid{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .hx{padding:20px 18px 18px}
+  .hx-track{grid-template-columns:1fr;gap:10px}
+  .hx-node{flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:10px;padding:12px}
+  .hx-node .hx-ic{margin-bottom:0}
+  .hx-node em{flex-basis:100%;padding-left:36px}
+  .hx-res{padding-left:36px;flex-basis:100%;margin-top:0}
+  .hx-res:empty{display:none}
+  .hx-node:not(:last-child)::after{top:auto;bottom:-11px;right:auto;left:24px;width:1px;height:11px}
+  .hx-node .hx-dot{top:auto;bottom:-14px;right:auto;left:20px}
+  @keyframes hxgo{0%{opacity:1;transform:translateY(-10px)}100%{opacity:0;transform:translateY(12px)}}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -538,10 +595,59 @@ footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:40px;back
   </div>
 </section>
 
+<!-- ============ HOW I WORK ============ -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="eyebrow rv"><b>//</b> 02 &middot; How I work</div>
+    <div class="kicker rv">Under the hood</div>
+    <h2 class="sec-title rv">How it runs<span class="dot">.</span></h2>
+    <p class="lead rv">Two things I build and run, shown step by step. The flows match the real systems; the commits and emails are examples.</p>
+
+    <div class="hx-grid">
+      <div class="panel hx rv" id="hxCI" data-kind="ci">
+        <div class="hx-head">
+          <div>
+            <div class="hx-tag">CI/CD &middot; Flutter release</div>
+            <h3>From a push to the stores</h3>
+          </div>
+          <div class="hx-tools"><span class="chip">GitHub Actions</span><span class="chip">Codemagic</span></div>
+        </div>
+        <div class="hx-event"><span class="hx-ev-k">Commit</span><span class="hx-ev-v" data-ev>Waiting for a push</span></div>
+        <ol class="hx-track">
+          <li class="hx-node"><span class="hx-ic">1</span><b>Push</b><em>Pull request or merge to main</em></li>
+          <li class="hx-node dec"><span class="hx-ic">2</span><b>Checks</b><em>flutter analyze and tests on GitHub Actions</em><span class="hx-res"></span></li>
+          <li class="hx-node"><span class="hx-ic">3</span><b>Build and sign</b><em>Android and iOS builds on Codemagic</em></li>
+          <li class="hx-node"><span class="hx-ic">4</span><b>Release</b><em>TestFlight and Play Console testing track</em><span class="hx-res"></span></li>
+        </ol>
+        <div class="hx-log" aria-live="polite"></div>
+      </div>
+
+      <div class="panel hx rv" id="hxAgent" data-kind="agent">
+        <div class="hx-head">
+          <div>
+            <div class="hx-tag">AI agent &middot; Email triage</div>
+            <h3>How the agent handles an email</h3>
+          </div>
+          <div class="hx-tools"><span class="chip">Microsoft Graph</span><span class="chip">Teams</span></div>
+        </div>
+        <div class="hx-event"><span class="hx-ev-k">Email</span><span class="hx-ev-v" data-ev>Waiting for mail</span></div>
+        <ol class="hx-track">
+          <li class="hx-node"><span class="hx-ic">1</span><b>Inbox</b><em>New mail read over Microsoft Graph</em></li>
+          <li class="hx-node dec"><span class="hx-ic">2</span><b>Guardrails</b><em>Scope and confidentiality rules</em><span class="hx-res"></span></li>
+          <li class="hx-node dec"><span class="hx-ic">3</span><b>Classify</b><em>Graded against a fixed category rubric</em><span class="hx-res"></span></li>
+          <li class="hx-node"><span class="hx-ic">4</span><b>Teams</b><em>Summary and draft reply posted for the team</em><span class="hx-res"></span></li>
+        </ol>
+        <div class="hx-log" aria-live="polite"></div>
+        <div class="hx-foot">30 to 40 emails a day &middot; about 95% classified correctly</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ EXPERIENCE ============ -->
 <section class="sec" id="experience">
   <div class="wrap center">
-    <div class="eyebrow rv"><b>//</b> 02 &middot; Experience</div>
+    <div class="eyebrow rv"><b>//</b> 03 &middot; Experience</div>
     <div class="kicker rv">What I have done so far</div>
     <h2 class="sec-title rv">Work Experience<span class="dot">.</span></h2>
   </div>
@@ -694,7 +800,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:40px;back
 <!-- ============ PROJECTS ============ -->
 <section class="sec" id="projects">
   <div class="wrap">
-    <div class="eyebrow rv"><b>//</b> 03 &middot; Projects</div>
+    <div class="eyebrow rv"><b>//</b> 04 &middot; Projects</div>
     <div class="kicker rv">My work</div>
     <h2 class="sec-title rv">Projects<span class="dot">.</span></h2>
     <p class="lead rv">Mobile products first, then the backends, pipelines and AI systems behind them. Client names are withheld where the work is under NDA or covers patient data. Sectors and stacks are real.</p>
@@ -1060,7 +1166,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:40px;back
 <!-- ============ TESTIMONIALS ============ -->
 <section class="sec" id="feedback">
   <div class="wrap center">
-    <div class="eyebrow rv"><b>//</b> 04 &middot; Feedback</div>
+    <div class="eyebrow rv"><b>//</b> 05 &middot; Feedback</div>
     <div class="kicker rv">What clients say</div>
     <h2 class="sec-title rv">Testimonials<span class="dot">.</span></h2>
     <p class="lead rv">Verified reviews from Upwork contracts, with a 5.0 on every job.</p>
@@ -1115,7 +1221,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:40px;back
 <!-- ============ SKILLS ============ -->
 <section class="sec" id="skills">
   <div class="wrap">
-    <div class="eyebrow rv"><b>//</b> 05 &middot; Capabilities</div>
+    <div class="eyebrow rv"><b>//</b> 06 &middot; Capabilities</div>
     <div class="kicker rv">What I work with</div>
     <h2 class="sec-title rv">Skills &amp; Expertise<span class="dot">.</span></h2>
     <div class="sgrid">
@@ -1151,7 +1257,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:40px;back
 <!-- ============ CONTACT ============ -->
 <section class="sec" id="contact">
   <div class="wrap">
-    <div class="eyebrow rv"><b>//</b> 06 &middot; Contact</div>
+    <div class="eyebrow rv"><b>//</b> 07 &middot; Contact</div>
     <div class="kicker rv">Get in touch</div>
     <h2 class="sec-title rv">Contact<span class="dot">.</span></h2>
     <p class="lead rv">Building a product and need someone who can own it end to end? Email me. I usually reply within a day.</p>
@@ -1300,6 +1406,102 @@ footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:40px;back
       if (el.getBoundingClientRect().top < (window.innerHeight || 800)) el.classList.add('in');
     }); }, 900);
   }
+
+
+  /* ---------- how it runs: animated flows ---------- */
+  (function(){
+    var SC = {
+      ci: [
+        { ev: 'Fix checkout crash on Android 14', steps: [
+          { n: 0, log: 'push to main, workflow started', cls: 'hi' },
+          { n: 1, log: 'flutter analyze: no issues', cls: '' },
+          { n: 1, log: 'tests passed, checks green', cls: 'ok', res: 'PASS', state: 'done' },
+          { n: 2, log: 'Codemagic: building Android and iOS', cls: '' },
+          { n: 2, log: 'builds signed', cls: 'ok', state: 'done' },
+          { n: 3, log: 'uploaded to TestFlight and Play Console', cls: 'ok', res: 'SHIPPED', state: 'done' } ] },
+        { ev: 'Refactor payment state handling', steps: [
+          { n: 0, log: 'pull request opened, workflow started', cls: 'hi' },
+          { n: 1, log: 'flutter analyze: no issues', cls: '' },
+          { n: 1, log: '1 test failed, release blocked', cls: 'bad', res: 'FAIL', state: 'fail', stop: true },
+          { n: -1, log: 'author notified, nothing reaches the stores', cls: '' } ] }
+      ],
+      agent: [
+        { ev: 'Client: Request for quotation, 20 laptops', steps: [
+          { n: 0, log: 'new message received', cls: 'hi' },
+          { n: 1, log: 'in scope, confidentiality rules passed', cls: 'ok', res: 'PASS', state: 'done' },
+          { n: 2, log: 'rubric match: quotation request', cls: '' },
+          { n: 2, log: 'category: business', cls: 'ok', res: 'BUSINESS', state: 'done' },
+          { n: 3, log: 'summary and draft reply posted to Teams', cls: 'ok', res: 'POSTED', state: 'done' } ] },
+        { ev: 'Colleague: Question about the new rota', steps: [
+          { n: 0, log: 'new message received', cls: 'hi' },
+          { n: 1, log: 'in scope, confidentiality rules passed', cls: 'ok', res: 'PASS', state: 'done' },
+          { n: 2, log: 'rubric match: colleague query', cls: '' },
+          { n: 2, log: 'category: team question', cls: 'ok', res: 'TEAM', state: 'done' },
+          { n: 3, log: 'summary posted to Teams', cls: 'ok', res: 'POSTED', state: 'done' } ] },
+        { ev: 'Request for data from another mailbox', steps: [
+          { n: 0, log: 'new message received', cls: 'hi' },
+          { n: 1, log: 'out of scope for this mailbox', cls: 'bad' },
+          { n: 1, log: 'refused at the tool layer, nothing shared', cls: 'bad', res: 'REFUSED', state: 'fail', stop: true } ] }
+      ]
+    };
+    var STEP = 1300, PAUSE = 2600;
+
+    function run(root){
+      var kind = root.getAttribute('data-kind'), list = SC[kind], k = 0;
+      var nodes = root.querySelectorAll('.hx-node'), log = root.querySelector('.hx-log'), ev = root.querySelector('[data-ev]');
+      nodes.forEach(function(n){ var d = document.createElement('span'); d.className = 'hx-dot'; n.appendChild(d); });
+      var timer = null, visible = false;
+
+      function reset(){
+        nodes.forEach(function(n){ n.className = n.className.replace(/\s?(on|done|fail|skip|go)\b/g, ''); var r = n.querySelector('.hx-res'); if (r) r.textContent = ''; });
+        log.innerHTML = '';
+      }
+      function line(text, cls){
+        var d = document.createElement('div'), t = new Date();
+        d.innerHTML = '<s>' + ('0' + t.getHours()).slice(-2) + ':' + ('0' + t.getMinutes()).slice(-2) + ':' + ('0' + t.getSeconds()).slice(-2) + '</s>';
+        d.appendChild(document.createTextNode(text));
+        if (cls) d.className = cls;
+        log.appendChild(d);
+        while (log.children.length > 5) log.removeChild(log.firstChild);
+      }
+      function play(){
+        var sc = list[k % list.length]; k++;
+        reset(); ev.style.opacity = 0;
+        setTimeout(function(){ ev.textContent = sc.ev; ev.style.opacity = 1; }, 250);
+        var i = 0, last = -1;
+        function step(){
+          if (!visible){ timer = setTimeout(step, 400); return; }
+          if (i >= sc.steps.length){ timer = setTimeout(play, PAUSE); return; }
+          var s = sc.steps[i++];
+          if (s.n >= 0){
+            var node = nodes[s.n];
+            if (s.n !== last){
+              if (last >= 0){ var prev = nodes[last]; if (!/done|fail/.test(prev.className)) prev.classList.add('done'); prev.classList.remove('on'); prev.classList.remove('go'); void prev.offsetWidth; prev.classList.add('go'); }
+              node.classList.add('on'); last = s.n;
+            }
+            if (s.res){ var r = node.querySelector('.hx-res'); if (r) r.textContent = s.res; }
+            if (s.state){ node.classList.remove('on'); node.classList.add(s.state); }
+            if (s.stop){ for (var j = s.n + 1; j < nodes.length; j++) nodes[j].classList.add('skip'); }
+          }
+          line(s.log, s.cls);
+          timer = setTimeout(step, STEP);
+        }
+        timer = setTimeout(step, 500);
+      }
+      if ('IntersectionObserver' in window){
+        new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }, { threshold: .25 }).observe(root);
+      } else { visible = true; }
+      if (reduce){
+        /* static final state for reduced motion */
+        visible = true; STEP = 0;
+        var sc = list[0]; ev.textContent = sc.ev;
+        sc.steps.forEach(function(s){ if (s.n >= 0){ var n = nodes[s.n]; n.classList.add(s.state || 'done'); if (s.res){ var r = n.querySelector('.hx-res'); if (r) r.textContent = s.res; } } line(s.log, s.cls); });
+        return;
+      }
+      play();
+    }
+    document.querySelectorAll('.hx').forEach(run);
+  })();
 
   /* ---------- mobile menu ---------- */
   var burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
